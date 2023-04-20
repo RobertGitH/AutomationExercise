@@ -22,8 +22,6 @@ public class BrowserManager {
             chromeOptions.addArguments("--incognito");
             driver = new ChromeDriver(chromeOptions);
 
-            //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10L));
-
         } else if (name.equalsIgnoreCase("Firefox")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.addArguments("-headed");

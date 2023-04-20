@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.io.IOException;
+import java.time.Duration;
 
 public class BaseTest {
 
@@ -23,7 +24,8 @@ public class BaseTest {
         WebDriver driver = BrowserManager.doBrowserSetup();
         threadLocalDriver.set(driver);
         getDriver().get(url);
-        getDriver().manage().window().maximize();
+        //getDriver().manage().window().maximize();
+        //getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10L));
     }
 
     @AfterMethod
