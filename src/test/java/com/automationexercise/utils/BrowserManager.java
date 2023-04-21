@@ -18,14 +18,14 @@ public class BrowserManager {
 
             System.setProperty("webdriver.chrome.silentOutput", "true");
             ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--headed"); //add options for --headed or --headless browser launch
+            //chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--incognito");
             driver = new ChromeDriver(chromeOptions);
 
         } else if (name.equalsIgnoreCase("Firefox")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-            firefoxOptions.addArguments("-headed");
-            firefoxOptions.addArguments("-private");
+            //firefoxOptions.addArguments("--headless");
+            firefoxOptions.addArguments("--private");
             driver = new FirefoxDriver(firefoxOptions);
         }
         return driver;

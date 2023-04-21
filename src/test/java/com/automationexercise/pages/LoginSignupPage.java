@@ -30,10 +30,10 @@ public class LoginSignupPage {
         return newUserSignup;
     }
 
-    public EnterAccountInformation fillSignup(String name, String email) {
+    public EnterAccountInformationPage fillSignup(String name, String email) {
         nameInput.sendKeys(name);
         emailInput.sendKeys(email);
         signupButton.click();
-        return new EnterAccountInformation(driver);
+        return new EnterAccountInformationPage(driver);
     }
 }
