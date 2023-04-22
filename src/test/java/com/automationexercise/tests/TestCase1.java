@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 public class TestCase1 extends TestBasic {
     @Test(description = "Test Case 1: Register User")
     @Severity(SeverityLevel.CRITICAL)
+    @Story("Create and delete account")
     @Description
             (
                     "1. Launch browser\n" +
@@ -32,7 +33,6 @@ public class TestCase1 extends TestBasic {
                             "17. Click 'Delete Account' button\n" +
                             "18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button"
             )
-    @Story("Register User")
     public void registerUser() {
         String name = "name" + Util.generateCurrentDateAndTime();
         String email = "email" + Util.generateCurrentDateAndTime() + "@o2.pl";

@@ -1,17 +1,11 @@
 package com.automationexercise.tests;
 
-import com.automationexercise.utils.Allure;
 import com.automationexercise.utils.BrowserManager;
 import com.automationexercise.utils.PropertiesLoader;
-import io.qameta.allure.Step;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 
-import java.io.File;
 import java.io.IOException;
 
 public class TestBasic {
@@ -21,18 +15,7 @@ public class TestBasic {
         return tdriver.get();
     }
 
-    @BeforeSuite
-    public void deleteOldReport() throws IOException {
-        FileUtils.deleteDirectory(new File("target/allure-results"));
-    }
-
-    @AfterSuite
-    public void generateReport() {
-        Allure.onGenerateAllureReport();
-    }
-
     @BeforeMethod
-    @Step("1. Launch browser 2. Navigate to url 'http://automationexercise.com'")
     public void setup() throws IOException {
         String url = PropertiesLoader.loadProperty("url");
 
@@ -45,7 +28,7 @@ public class TestBasic {
 
     @AfterMethod
     public void tearDown() {
-        getDriver().quit();
+        //getDriver().quit();
         tdriver.remove();
     }
 }
