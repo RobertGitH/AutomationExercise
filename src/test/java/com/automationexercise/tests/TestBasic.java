@@ -14,12 +14,11 @@ import org.testng.annotations.BeforeSuite;
 import java.io.File;
 import java.io.IOException;
 
-public class BaseTest {
+public class TestBasic {
+    protected static ThreadLocal<WebDriver> tdriver = new ThreadLocal<>();
 
-    protected static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
-
-    public static WebDriver getDriver() {
-        return threadLocalDriver.get();
+    public static synchronized WebDriver getDriver() {
+        return tdriver.get();
     }
 
     @BeforeSuite
@@ -33,12 +32,12 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    @Step("1. Launch browser | 2. Navigate to url 'http://automationexercise.com'")
+    @Step("1. Launch browser 2. Navigate to url 'http://automationexercise.com'")
     public void setup() throws IOException {
         String url = PropertiesLoader.loadProperty("url");
 
         WebDriver driver = BrowserManager.doBrowserSetup();
-        threadLocalDriver.set(driver);
+        tdriver.set(driver);
         getDriver().get(url);
         //getDriver().manage().window().maximize();
         //getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10L));
@@ -46,7 +45,7 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown() {
-        //getDriver().quit();
-        threadLocalDriver.remove();
+        getDriver().quit();
+        tdriver.remove();
     }
 }

@@ -32,6 +32,7 @@ import io.qameta.allure.suites.SuitesPlugin;
 import io.qameta.allure.summary.SummaryPlugin;
 import io.qameta.allure.tags.TagsPlugin;
 import io.qameta.allure.timeline.TimelinePlugin;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;

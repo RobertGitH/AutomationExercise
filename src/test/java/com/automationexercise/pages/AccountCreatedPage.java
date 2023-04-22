@@ -13,9 +13,6 @@ public class AccountCreatedPage {
     @FindBy(css = "a[data-qa='continue-button']")
     private WebElement continueButton;
 
-    @FindBy(id = "dismiss-button")
-    private WebElement dismissAdButton;
-
     private WebDriver driver;
 
     public AccountCreatedPage(WebDriver driver) {

@@ -11,7 +11,6 @@ import java.io.IOException;
 public class BrowserManager {
 
     public static WebDriver doBrowserSetup() throws IOException {
-
         WebDriver driver = null;
         String name = PropertiesLoader.loadProperty("browser.name");
         if (name.equalsIgnoreCase("Chrome")) {

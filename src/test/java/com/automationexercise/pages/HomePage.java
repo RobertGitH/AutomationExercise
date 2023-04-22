@@ -21,8 +21,7 @@ public class HomePage {
         this.driver = driver;
     }
 
-    @Step("3. Verify that home page is visible successfully")
-    public WebElement homePageVisible() {
+    public WebElement homePageIsVisible() {
         return girlImgResponsive;
     }
 
