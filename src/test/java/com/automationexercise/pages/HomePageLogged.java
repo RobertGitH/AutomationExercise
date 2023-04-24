@@ -13,6 +13,9 @@ public class HomePageLogged {
     @FindBy(xpath = "/html/body/header/div/div/div/div[2]/div/ul/li[5]/a")
     private WebElement deleteAccountButton;
 
+    @FindBy(xpath = "//header/div/div/div/div[2]/div/ul/li[4]/a")
+    private WebElement logoutButton;
+
     private WebDriver driver;
 
     public HomePageLogged(WebDriver driver) {
@@ -27,5 +30,10 @@ public class HomePageLogged {
     public AccountDeletedPage deleteAccountButtonClick() {
         deleteAccountButton.click();
         return new AccountDeletedPage(driver);
+    }
+
+    public LoginSignupPage logoutButtonClick() {
+        logoutButton.click();
+        return new LoginSignupPage(driver);
     }
 }

@@ -9,10 +9,6 @@ import org.testng.annotations.Test;
 @Epic("Regression Tests")
 @Feature("Login User")
 public class TestCase2 extends TestBasic {
-    String name = "robert212197331002";
-    String email = "robert212197331002@test.pl";
-    String password = "robert212197331002@test.pl";
-
     @Test(description = "Test Case 2: Login User with correct email and password")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Login User with correct email and password")
@@ -24,7 +20,11 @@ public class TestCase2 extends TestBasic {
             "6. Enter correct email address and password\n" +
             "7. Click 'login' button\n" +
             "8. Verify that 'Logged in as username' is visible")
-    public void loginUserWithCorrectEmailAndPassword() {
+    public static void loginUserWithCorrectEmailAndPassword() {
+        String name = "robert212197331002";
+        String email = "robert212197331002@test.pl";
+        String password = "robert212197331002@test.pl";
+
         boolean homePageVisible = new HomePage(getDriver())
                 .homePageIsVisible()
                 .isDisplayed();
@@ -49,7 +49,7 @@ public class TestCase2 extends TestBasic {
     }
 
     @Step("8. Verify that 'Logged in as username' is visible")
-    private void verifyThatLoggedInAsUsernameIsVisible(String username, String name) {
+    public static void verifyThatLoggedInAsUsernameIsVisible(String username, String name) {
         Assert.assertEquals(username, name, "8. Verify that 'Logged in as username' is visible");
     }
 }
