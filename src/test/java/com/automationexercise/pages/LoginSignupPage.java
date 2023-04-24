@@ -7,14 +7,26 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginSignupPage {
 
+    @FindBy(css = "div[class='login-form'] h2")
+    private WebElement loginToYourAccount;
+
+    @FindBy(css = "input[data-qa='login-email']")
+    private WebElement loginEmailInput;
+
+    @FindBy(css = "input[data-qa='login-password']")
+    private WebElement loginPasswordInput;
+
+    @FindBy(css = "button[data-qa='login-button']")
+    private WebElement loginButton;
+
     @FindBy(css = "div[class='signup-form'] h2")
     private WebElement newUserSignup;
 
-    @FindBy(name = "name")
-    private WebElement nameInput;
+    @FindBy(css = "input[data-qa='signup-name']")
+    private WebElement signupNameInput;
 
     @FindBy(css = "input[data-qa='signup-email']")
-    private WebElement emailInput;
+    private WebElement signupEmailInput;
 
     @FindBy(css = "button[data-qa='signup-button']")
     private WebElement signupButton;
@@ -31,9 +43,20 @@ public class LoginSignupPage {
     }
 
     public EnterAccountInformationPage fillSignup(String name, String email) {
-        nameInput.sendKeys(name);
-        emailInput.sendKeys(email);
+        signupNameInput.sendKeys(name);
+        signupEmailInput.sendKeys(email);
         signupButton.click();
         return new EnterAccountInformationPage(driver);
+    }
+
+    public WebElement getLoginToYourAccount() {
+        return loginToYourAccount;
+    }
+
+    public HomePageLogged fillLogin(String email, String password) {
+        loginEmailInput.sendKeys(email);
+        loginPasswordInput.sendKeys(password);
+        loginButton.click();
+        return new HomePageLogged(driver);
     }
 }
