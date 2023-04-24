@@ -34,6 +34,9 @@ public class LoginSignupPage {
     @FindBy(css = "button[data-qa='signup-button']")
     private WebElement signupButton;
 
+    @FindBy(xpath = "//section/div/div/div[3]/div/form/p")
+    private WebElement emailAddressAlreadyExist;
+
     private WebDriver driver;
 
     public LoginSignupPage(WebDriver driver) {
@@ -45,34 +48,47 @@ public class LoginSignupPage {
         return newUserSignup;
     }
 
-    public EnterAccountInformationPage fillSignup(String name, String email) {
+    private void fillSignup(String name, String email) {
         signupNameInput.sendKeys(name);
         signupEmailInput.sendKeys(email);
         signupButton.click();
+    }
+
+    public EnterAccountInformationPage fillCorrectSignup(String name, String email) {
+        fillSignup(name, email);
         return new EnterAccountInformationPage(driver);
+    }
+
+    public LoginSignupPage fillIncorrectSignup(String name, String email) {
+        fillSignup(name, email);
+        return this;
     }
 
     public WebElement getLoginToYourAccount() {
         return loginToYourAccount;
     }
 
-    private void fill(String email, String password) {
+    private void fillLogin(String email, String password) {
         loginEmailInput.sendKeys(email);
         loginPasswordInput.sendKeys(password);
         loginButton.click();
     }
 
-    public HomePageLogged fillLogin(String email, String password) {
-        fill(email, password);
+    public HomePageLogged fillCorrectLogin(String email, String password) {
+        fillLogin(email, password);
         return new HomePageLogged(driver);
     }
 
     public LoginSignupPage fillIncorrectLogin(String email, String password) {
-        fill(email, password);
+        fillLogin(email, password);
         return this;
     }
 
     public WebElement getErrorLogin() {
         return errorLogin;
+    }
+
+    public WebElement getEmailAddressAlreadyExist() {
+        return emailAddressAlreadyExist;
     }
 }

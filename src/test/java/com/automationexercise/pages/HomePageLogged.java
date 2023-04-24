@@ -10,7 +10,7 @@ public class HomePageLogged {
     @FindBy(xpath = "//*[@id='header']/div/div/div/div[2]/div/ul/li[10]/a/b")
     private WebElement username;
 
-    @FindBy(xpath = "/html/body/header/div/div/div/div[2]/div/ul/li[5]/a")
+    @FindBy(xpath = "//header/div/div/div/div[2]/div/ul/li[5]/a")
     private WebElement deleteAccountButton;
 
     @FindBy(xpath = "//header/div/div/div/div[2]/div/ul/li[4]/a")

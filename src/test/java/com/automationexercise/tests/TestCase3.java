@@ -25,16 +25,9 @@ public class TestCase3 extends TestBasic {
         String email = "email" + Util.generateCurrentDateAndTime() + "@incorrect.pl";
         String password = "pass" + Util.generateCurrentDateAndTime();
 
-        boolean homePageVisible = new HomePage(getDriver())
-                .homePageIsVisible()
-                .isDisplayed();
-        TestCase1.verifyThatHomePageIsVisibleSuccessfully(homePageVisible);
+        TestCase1.verifyThatHomePageIsVisibleSuccessfully();
 
-        String loginToYourAccountText = new HomePage(getDriver())
-                .signupLoginClick()
-                .getLoginToYourAccount()
-                .getText();
-        TestCase2.verifyLoginToYourAccountIsVisible(loginToYourAccountText);
+        TestCase2.verifyLoginToYourAccountIsVisible();
 
         String errorLoginText = new LoginSignupPage(getDriver())
                 .fillIncorrectLogin(email, password).getErrorLogin().getText();

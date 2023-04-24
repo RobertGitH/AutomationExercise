@@ -7,6 +7,7 @@
             <class name="com.automationexercise.tests.TestCase2"/>
             <class name="com.automationexercise.tests.TestCase3"/>
             <class name="com.automationexercise.tests.TestCase4"/>
+            <class name="com.automationexercise.tests.TestCase5"/>
         </classes>
     </test>
 </suite>

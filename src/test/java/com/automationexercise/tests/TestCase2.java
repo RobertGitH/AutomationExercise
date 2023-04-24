@@ -2,9 +2,12 @@ package com.automationexercise.tests;
 
 import com.automationexercise.pages.HomePage;
 import com.automationexercise.pages.LoginSignupPage;
+import com.automationexercise.utils.PropertiesLoader;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 @Epic("Regression Tests")
 @Feature("Login User")
@@ -20,31 +23,28 @@ public class TestCase2 extends TestBasic {
             "6. Enter correct email address and password\n" +
             "7. Click 'login' button\n" +
             "8. Verify that 'Logged in as username' is visible")
-    public static void loginUserWithCorrectEmailAndPassword() {
-        String name = "robert212197331002";
-        String email = "robert212197331002@test.pl";
-        String password = "robert212197331002@test.pl";
+    public static void loginUserWithCorrectEmailAndPassword() throws IOException {
+        String name = PropertiesLoader.loadProperty("correct.name");
+        String email = PropertiesLoader.loadProperty("correct.email");
+        String password = PropertiesLoader.loadProperty("correct.password");
 
-        boolean homePageVisible = new HomePage(getDriver())
-                .homePageIsVisible()
-                .isDisplayed();
-        TestCase1.verifyThatHomePageIsVisibleSuccessfully(homePageVisible);
+        TestCase1.verifyThatHomePageIsVisibleSuccessfully();
 
-        String loginToYourAccountText = new HomePage(getDriver())
-                .signupLoginClick()
-                .getLoginToYourAccount()
-                .getText();
-        verifyLoginToYourAccountIsVisible(loginToYourAccountText);
+        verifyLoginToYourAccountIsVisible();
 
         String username = new LoginSignupPage(getDriver())
-                .fillLogin(email, password)
+                .fillCorrectLogin(email, password)
                 .getUsername()
                 .getText();
         verifyThatLoggedInAsUsernameIsVisible(username, name);
     }
 
     @Step("5. Verify 'Login to your account' is visible")
-    public static void verifyLoginToYourAccountIsVisible(String loginToYourAccountText) {
+    public static void verifyLoginToYourAccountIsVisible() {
+        String loginToYourAccountText = new HomePage(getDriver())
+                .signupLoginClick()
+                .getLoginToYourAccount()
+                .getText();
         Assert.assertEquals(loginToYourAccountText, "Login to your account", "5. Verify 'Login to your account' is visible");
     }
 

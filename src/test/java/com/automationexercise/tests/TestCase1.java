@@ -34,19 +34,11 @@ public class TestCase1 extends TestBasic {
         String name = "name" + Util.generateCurrentDateAndTime();
         String email = "email" + Util.generateCurrentDateAndTime() + "@o2.pl";
 
-        boolean homePageVisible = new HomePage(getDriver())
-                .homePageIsVisible()
-                .isDisplayed();
-        verifyThatHomePageIsVisibleSuccessfully(homePageVisible);
-
-        String newUserSignupText = new HomePage(getDriver())
-                .signupLoginClick()
-                .getNewUserSignup()
-                .getText();
-        verifyNewUserSignupIsVisible(newUserSignupText);
+        verifyThatHomePageIsVisibleSuccessfully();
+        verifyNewUserSignupIsVisible();
 
         String enterAccountInformationText = new LoginSignupPage(getDriver())
-                .fillSignup(name, email)
+                .fillCorrectSignup(name, email)
                 .getEnterAccountInformation()
                 .getText();
         verifyThatEnterAccountInformationIsVisible(enterAccountInformationText);
@@ -72,12 +64,19 @@ public class TestCase1 extends TestBasic {
     }
 
     @Step("3. Verify that home page is visible successfully")
-    public static void verifyThatHomePageIsVisibleSuccessfully(boolean homePageVisible) {
+    public static void verifyThatHomePageIsVisibleSuccessfully() {
+        boolean homePageVisible = new HomePage(getDriver())
+                .homePageIsVisible()
+                .isDisplayed();
         Assert.assertTrue(homePageVisible, "3. Verify that home page is visible successfully");
     }
 
     @Step("5. Verify 'New User Signup!' is visible")
-    private void verifyNewUserSignupIsVisible(String newUserSignupText) {
+    public static void verifyNewUserSignupIsVisible() {
+        String newUserSignupText = new HomePage(getDriver())
+                .signupLoginClick()
+                .getNewUserSignup()
+                .getText();
         Assert.assertEquals(newUserSignupText, "New User Signup!", "5. Verify 'New User Signup!' is visible");
     }
 

@@ -5,6 +5,8 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 @Epic("Regression Tests")
 @Feature("Logout User")
 public class TestCase4 extends TestBasic {
@@ -22,7 +24,7 @@ public class TestCase4 extends TestBasic {
             "8. Verify that 'Logged in as username' is visible\n" +
             "9. Click 'Logout' button\n" +
             "10. Verify that user is navigated to login page")
-    public void logoutUser() {
+    public void logoutUser() throws IOException {
         TestCase2.loginUserWithCorrectEmailAndPassword();
         String loginToYourAccountText = new HomePageLogged(getDriver())
                 .logoutButtonClick()
