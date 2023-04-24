@@ -5,6 +5,7 @@
         <classes>
             <class name="com.automationexercise.tests.TestCase1"/>
             <class name="com.automationexercise.tests.TestCase2"/>
+            <class name="com.automationexercise.tests.TestCase3"/>
         </classes>
     </test>
 </suite>

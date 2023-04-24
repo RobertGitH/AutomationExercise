@@ -44,7 +44,7 @@ public class TestCase2 extends TestBasic {
     }
 
     @Step("5. Verify 'Login to your account' is visible")
-    private void verifyLoginToYourAccountIsVisible(String loginToYourAccountText) {
+    public static void verifyLoginToYourAccountIsVisible(String loginToYourAccountText) {
         Assert.assertEquals(loginToYourAccountText, "Login to your account", "5. Verify 'Login to your account' is visible");
     }
 

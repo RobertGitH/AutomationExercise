@@ -19,6 +19,9 @@ public class LoginSignupPage {
     @FindBy(css = "button[data-qa='login-button']")
     private WebElement loginButton;
 
+    @FindBy(xpath = "/html/body/section/div/div/div[1]/div/form/p")
+    private WebElement errorLogin;
+
     @FindBy(css = "div[class='signup-form'] h2")
     private WebElement newUserSignup;
 
@@ -53,10 +56,23 @@ public class LoginSignupPage {
         return loginToYourAccount;
     }
 
-    public HomePageLogged fillLogin(String email, String password) {
+    private void fill(String email, String password) {
         loginEmailInput.sendKeys(email);
         loginPasswordInput.sendKeys(password);
         loginButton.click();
+    }
+
+    public HomePageLogged fillLogin(String email, String password) {
+        fill(email, password);
         return new HomePageLogged(driver);
+    }
+
+    public LoginSignupPage fillIncorrectLogin(String email, String password) {
+        fill(email, password);
+        return this;
+    }
+
+    public WebElement getErrorLogin() {
+        return errorLogin;
     }
 }
