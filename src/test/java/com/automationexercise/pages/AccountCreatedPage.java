@@ -24,8 +24,8 @@ public class AccountCreatedPage {
         return accountCreated;
     }
 
-    public HomePageLogged continueButtonClick() {
+    public LoggedHomePage continueButtonClick() {
         continueButton.click();
-        return new HomePageLogged(driver);
+        return new LoggedHomePage(driver);
     }
 }

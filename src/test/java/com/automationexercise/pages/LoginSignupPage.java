@@ -74,9 +74,9 @@ public class LoginSignupPage {
         loginButton.click();
     }
 
-    public HomePageLogged fillCorrectLogin(String email, String password) {
+    public LoggedHomePage fillCorrectLogin(String email, String password) {
         fillLogin(email, password);
-        return new HomePageLogged(driver);
+        return new LoggedHomePage(driver);
     }
 
     public LoginSignupPage fillIncorrectLogin(String email, String password) {

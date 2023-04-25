@@ -1,6 +1,6 @@
 package com.automationexercise.tests;
 
-import com.automationexercise.pages.HomePageLogged;
+import com.automationexercise.pages.LoggedHomePage;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,7 +26,7 @@ public class TestCase4 extends TestBasic {
             "10. Verify that user is navigated to login page")
     public void logoutUser() throws IOException {
         TestCase2.loginUserWithCorrectEmailAndPassword();
-        String loginToYourAccountText = new HomePageLogged(getDriver())
+        String loginToYourAccountText = new LoggedHomePage(getDriver())
                 .logoutButtonClick()
                 .getLoginToYourAccount()
                 .getText();

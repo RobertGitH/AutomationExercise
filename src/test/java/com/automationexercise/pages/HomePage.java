@@ -16,6 +16,9 @@ public class HomePage {
     @FindBy(css = "a[href='/contact_us']")
     private WebElement contactUsButton;
 
+    @FindBy(css = "a[href='/test_cases']")
+    private WebElement testCasesButton;
+
     private WebDriver driver;
 
     public HomePage(WebDriver driver) {
@@ -35,6 +38,11 @@ public class HomePage {
     public ContactUsPage contactUsButtonClick() {
         contactUsButton.click();
         return new  ContactUsPage(driver);
+    }
+
+    public TestCasesPage testCasesButtonClick() {
+        testCasesButton.click();
+        return new TestCasesPage(driver);
     }
 }
 

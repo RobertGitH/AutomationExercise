@@ -12,7 +12,7 @@ public class TestCase6 extends TestBasic {
 
     @Test(description = "Test Case 6: Contact Us Form")
     @Severity(SeverityLevel.MINOR)
-    @Story("Create and delete account")
+    @Story("Contact Us Form")
     @Description("1. Launch browser\n" +
             "2. Navigate to url 'http://automationexercise.com'\n" +
             "3. Verify that home page is visible successfully\n" +

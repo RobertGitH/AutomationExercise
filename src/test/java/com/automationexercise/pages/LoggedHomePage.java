@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePageLogged {
+public class LoggedHomePage {
 
     @FindBy(xpath = "//*[@id='header']/div/div/div/div[2]/div/ul/li[10]/a/b")
     private WebElement username;
@@ -18,7 +18,7 @@ public class HomePageLogged {
 
     private WebDriver driver;
 
-    public HomePageLogged(WebDriver driver) {
+    public LoggedHomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }

@@ -56,7 +56,7 @@ public class TestCase1 extends TestBasic {
                 .getText();
         verifyThatLoggedInAsUsernameIsVisible(username, name);
 
-        String accountDeletedText = new HomePageLogged(getDriver())
+        String accountDeletedText = new LoggedHomePage(getDriver())
                 .deleteAccountButtonClick()
                 .getAccountDeleted()
                 .getText();
