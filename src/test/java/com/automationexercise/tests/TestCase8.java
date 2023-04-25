@@ -31,10 +31,10 @@ public class TestCase8 extends TestBasic {
     }
 
     @Step("5. Verify user is navigated to ALL PRODUCTS page successfully")
-    private void verifyUserIsNavigatedToAllProductsPageSuccessfully() {
+    public static void verifyUserIsNavigatedToAllProductsPageSuccessfully() {
         String allProductsText = new HomePage(getDriver())
                 .productsButtonClick()
-                .getAllProducts()
+                .getTitleTextCenter()
                 .getText();
         Assert.assertEquals(allProductsText, "ALL PRODUCTS", "5. Verify user is navigated to ALL PRODUCTS page successfully");
     }
