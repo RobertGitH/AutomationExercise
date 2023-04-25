@@ -11,7 +11,10 @@ public class HomePage {
     private WebElement girlImgResponsive;
 
     @FindBy(css = "a[href='/login']")
-    private WebElement signupLogin;
+    private WebElement signupLoginButton;
+
+    @FindBy(css = "a[href='/contact_us']")
+    private WebElement contactUsButton;
 
     private WebDriver driver;
 
@@ -25,8 +28,13 @@ public class HomePage {
     }
 
     public LoginSignupPage signupLoginClick() {
-        signupLogin.click();
+        signupLoginButton.click();
         return new LoginSignupPage(driver);
+    }
+
+    public ContactUsPage contactUsButtonClick() {
+        contactUsButton.click();
+        return new  ContactUsPage(driver);
     }
 }
 
