@@ -1,9 +1,12 @@
 package com.automationexercise.pages;
 
+import com.automationexercise.utils.PropertiesLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.io.IOException;
 
 public class HomePage {
 
@@ -21,6 +24,18 @@ public class HomePage {
 
     @FindBy(css = "a[href='/products']")
     private WebElement productsButton;
+
+    @FindBy(css = "div[class='single-widget'] h2")
+    private WebElement subscription;
+
+    @FindBy(id = "susbscribe_email")
+    private WebElement subscribeEmailInput;
+
+    @FindBy(id = "subscribe")
+    private WebElement subscribeButton;
+
+    @FindBy(id = "success-subscribe")
+    private WebElement alertSuccessSubscribe;
 
     private WebDriver driver;
 
@@ -40,7 +55,7 @@ public class HomePage {
 
     public ContactUsPage contactUsButtonClick() {
         contactUsButton.click();
-        return new  ContactUsPage(driver);
+        return new ContactUsPage(driver);
     }
 
     public TestCasesPage testCasesButtonClick() {
@@ -51,6 +66,20 @@ public class HomePage {
     public ProductsPage productsButtonClick() {
         productsButton.click();
         return new ProductsPage(driver);
+    }
+
+    public WebElement getSubscription() {
+        return subscription;
+    }
+
+    public HomePage fillSubscribe() throws IOException {
+        subscribeEmailInput.sendKeys(PropertiesLoader.loadProperty("correct.email"));
+        subscribeButton.click();
+        return this;
+    }
+
+    public WebElement getAlertSuccessSubscribe() {
+        return alertSuccessSubscribe;
     }
 }
 
