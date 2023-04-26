@@ -24,7 +24,10 @@ public class HomePage {
 
     @FindBy(css = "a[href='/products']")
     private WebElement productsButton;
+    @FindBy(css = "a[href='/view_cart']")
+    private WebElement cartButton;
 
+    //footer
     @FindBy(css = "div[class='single-widget'] h2")
     private WebElement subscription;
 
@@ -68,6 +71,12 @@ public class HomePage {
         return new ProductsPage(driver);
     }
 
+    public CartPage cartButtonClick() {
+        cartButton.click();
+        return new CartPage(driver);
+    }
+
+    //footer
     public WebElement getSubscription() {
         return subscription;
     }
@@ -81,6 +90,7 @@ public class HomePage {
     public WebElement getAlertSuccessSubscribe() {
         return alertSuccessSubscribe;
     }
+
 }
 
 

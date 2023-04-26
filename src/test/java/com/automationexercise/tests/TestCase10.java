@@ -28,14 +28,14 @@ public class TestCase10 extends TestBasic {
         verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible();
     }
 
-    private void verifyTextSubscription() {
+    public static void verifyTextSubscription() {
         String subscriptionText = new HomePage(getDriver())
                 .getSubscription()
                 .getText();
         Assert.assertEquals(subscriptionText, "SUBSCRIPTION", "5. Verify text 'SUBSCRIPTION'");
     }
 
-    private void verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible() throws IOException {
+    public static void verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible() throws IOException {
         String messageAlert = new HomePage(getDriver())
                 .fillSubscribe()
                 .getAlertSuccessSubscribe()
