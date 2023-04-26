@@ -1,6 +1,5 @@
 package com.automationexercise.tests;
 
-import com.automationexercise.pages.HomePage;
 import com.automationexercise.pages.LoginSignupPage;
 import com.automationexercise.utils.Util;
 import io.qameta.allure.*;
@@ -22,20 +21,20 @@ public class TestCase3 extends TestBasic {
             "7. Click 'login' button\n" +
             "8. Verify error 'Your email or password is incorrect!' is visible")
     public void loginUserWithIncorrectEmailAndPassword() {
-        String email = "email" + Util.generateCurrentDateAndTime() + "@incorrect.pl";
-        String password = "pass" + Util.generateCurrentDateAndTime();
-
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
-
         TestCase2.verifyLoginToYourAccountIsVisible();
-
-        String errorLoginText = new LoginSignupPage(getDriver())
-                .fillIncorrectLogin(email, password).getErrorLogin().getText();
-        verifyErrorYourEmailOrPasswordIsIncorrectIsVisible(errorLoginText);
+        verifyErrorYourEmailOrPasswordIsIncorrectIsVisible();
     }
 
     @Step("8. Verify error 'Your email or password is incorrect!' is visible")
-    private void verifyErrorYourEmailOrPasswordIsIncorrectIsVisible(String errorLoginText) {
+    private void verifyErrorYourEmailOrPasswordIsIncorrectIsVisible() {
+        String email = "email" + Util.generateCurrentDateAndTime() + "@incorrect.pl";
+        String password = "pass" + Util.generateCurrentDateAndTime();
+
+        String errorLoginText = new LoginSignupPage(getDriver())
+                .fillIncorrectLogin(email, password)
+                .getErrorLogin()
+                .getText();
         Assert.assertEquals(errorLoginText, "Your email or password is incorrect!", "8. Verify error 'Your email or password is incorrect!' is visible");
     }
 }

@@ -26,15 +26,15 @@ public class TestCase4 extends TestBasic {
             "10. Verify that user is navigated to login page")
     public void logoutUser() throws IOException {
         TestCase2.loginUserWithCorrectEmailAndPassword();
+        verifyThatUserIsNavigatedToLoginPage();
+    }
+
+    @Step("10. Verify that user is navigated to login page")
+    private void verifyThatUserIsNavigatedToLoginPage() {
         String loginToYourAccountText = new LoggedHomePage(getDriver())
                 .logoutButtonClick()
                 .getLoginToYourAccount()
                 .getText();
-        verifyThatUserIsNavigatedToLoginPage(loginToYourAccountText);
-    }
-
-    @Step("10. Verify that user is navigated to login page")
-    private void verifyThatUserIsNavigatedToLoginPage(String loginToYourAccountText) {
         Assert.assertEquals(loginToYourAccountText, "Login to your account", "10. Verify that user is navigated to login page");
     }
 }

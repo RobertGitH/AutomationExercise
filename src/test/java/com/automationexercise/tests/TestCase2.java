@@ -12,6 +12,7 @@ import java.io.IOException;
 @Epic("Regression Tests")
 @Feature("Login User")
 public class TestCase2 extends TestBasic {
+
     @Test(description = "Test Case 2: Login User with correct email and password")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Login User with correct email and password")
@@ -24,19 +25,9 @@ public class TestCase2 extends TestBasic {
             "7. Click 'login' button\n" +
             "8. Verify that 'Logged in as username' is visible")
     public static void loginUserWithCorrectEmailAndPassword() throws IOException {
-        String name = PropertiesLoader.loadProperty("correct.name");
-        String email = PropertiesLoader.loadProperty("correct.email");
-        String password = PropertiesLoader.loadProperty("correct.password");
-
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
-
         verifyLoginToYourAccountIsVisible();
-
-        String username = new LoginSignupPage(getDriver())
-                .fillCorrectLogin(email, password)
-                .getUsername()
-                .getText();
-        verifyThatLoggedInAsUsernameIsVisible(username, name);
+        verifyThatLoggedInAsUsernameIsVisible();
     }
 
     @Step("5. Verify 'Login to your account' is visible")
@@ -49,7 +40,15 @@ public class TestCase2 extends TestBasic {
     }
 
     @Step("8. Verify that 'Logged in as username' is visible")
-    public static void verifyThatLoggedInAsUsernameIsVisible(String username, String name) {
+    private static void verifyThatLoggedInAsUsernameIsVisible() throws IOException {
+        String name = PropertiesLoader.loadProperty("correct.name");
+        String email = PropertiesLoader.loadProperty("correct.email");
+        String password = PropertiesLoader.loadProperty("correct.password");
+
+        String username = new LoginSignupPage(getDriver())
+                .fillCorrectLogin(email, password)
+                .getUsername()
+                .getText();
         Assert.assertEquals(username, name, "8. Verify that 'Logged in as username' is visible");
     }
 }
