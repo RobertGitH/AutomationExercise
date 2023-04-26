@@ -28,6 +28,7 @@ public class TestCase10 extends TestBasic {
         verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible();
     }
 
+    @Step("5. Verify text 'SUBSCRIPTION")
     public static void verifyTextSubscription() {
         String subscriptionText = new HomePage(getDriver())
                 .getSubscription()
@@ -35,6 +36,7 @@ public class TestCase10 extends TestBasic {
         Assert.assertEquals(subscriptionText, "SUBSCRIPTION", "5. Verify text 'SUBSCRIPTION'");
     }
 
+    @Step("7. Verify success message 'You have been successfully subscribed!' is visible")
     public static void verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible() throws IOException {
         String messageAlert = new HomePage(getDriver())
                 .fillSubscribe()
