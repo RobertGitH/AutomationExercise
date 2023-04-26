@@ -2,6 +2,7 @@ package com.automationexercise.tests;
 
 import com.automationexercise.utils.BrowserManager;
 import com.automationexercise.utils.PropertiesLoader;
+import com.automationexercise.utils.Util;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -9,6 +10,9 @@ import org.testng.annotations.BeforeMethod;
 import java.io.IOException;
 
 public class TestBasic {
+
+    String name = "name" + Util.generateCurrentDateAndTime();
+    String email = "email" + Util.generateCurrentDateAndTime() + "@o2.pl";
 
     public String firstName = "Robert";
     public String lastName = "Rozwadowski";

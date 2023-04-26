@@ -1,7 +1,6 @@
 package com.automationexercise.tests;
 
 import com.automationexercise.pages.*;
-import com.automationexercise.utils.Util;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,9 +8,6 @@ import org.testng.annotations.Test;
 @Epic("Regression Tests")
 @Feature("Register User")
 public class TestCase1 extends TestBasic {
-
-    String name = "name" + Util.generateCurrentDateAndTime();
-    String email = "email" + Util.generateCurrentDateAndTime() + "@o2.pl";
 
     @Test(description = "Test Case 1: Register User")
     @Severity(SeverityLevel.CRITICAL)
