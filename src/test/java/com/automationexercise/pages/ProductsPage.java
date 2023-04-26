@@ -25,6 +25,18 @@ public class ProductsPage {
     @FindBy(xpath = "//div[contains(@class, 'productinfo text-center')]//p")
     private List<WebElement> searchResultsNames;
 
+    @FindBy(css = "a[data-product-id='1']")
+    private WebElement addToCartButton1;
+
+    @FindBy(css = "a[data-product-id='2']")
+    private WebElement addToCartButton2;
+
+    @FindBy(css = "button[data-dismiss='modal']")
+    private WebElement continueShoppingButton;
+
+    @FindBy(css = "a[href='/view_cart'] u")
+    private WebElement viewCartButton;
+
     private WebDriver driver;
 
     public ProductsPage(WebDriver driver) {
@@ -50,9 +62,17 @@ public class ProductsPage {
     public List<String> getProductsSearchNames() {
         List<String> searchNames = searchResultsNames
                 .stream()
-                .map(el -> el.getText())
+                .map(WebElement::getText)
                 .collect(Collectors.toList());
         return searchNames;
+    }
+
+    public CartPage addProductsToCart() {
+        addToCartButton1.click();
+        continueShoppingButton.click();
+        addToCartButton2.click();
+        viewCartButton.click();
+        return new CartPage(driver);
     }
 }
 

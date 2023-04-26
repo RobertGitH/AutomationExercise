@@ -13,6 +13,8 @@
             <class name="com.automationexercise.tests.TestCase8"/>
             <class name="com.automationexercise.tests.TestCase9"/>
             <class name="com.automationexercise.tests.TestCase10"/>
+            <class name="com.automationexercise.tests.TestCase11"/>
+            <class name="com.automationexercise.tests.TestCase12"/>
         </classes>
     </test>
 </suite>

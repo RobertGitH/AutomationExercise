@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 @Epic("Regression Tests")
-@Feature("Verify")
+@Feature("Cart")
 public class TestCase11 extends TestBasic {
 
     @Test(description = "Test Case 11: Verify Subscription in Cart page")
