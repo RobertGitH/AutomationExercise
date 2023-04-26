@@ -14,16 +14,17 @@ public class TestCase4 extends TestBasic {
     @Test(description = "Test Case 4: Logout User")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Logout User")
-    @Description("1. Launch browser\n" +
-            "2. Navigate to url 'http://automationexercise.com'\n" +
-            "3. Verify that home page is visible successfully\n" +
-            "4. Click on 'Signup / Login' button\n" +
-            "5. Verify 'Login to your account' is visible\n" +
-            "6. Enter correct email address and password\n" +
-            "7. Click 'login' button\n" +
-            "8. Verify that 'Logged in as username' is visible\n" +
-            "9. Click 'Logout' button\n" +
-            "10. Verify that user is navigated to login page")
+    @Description("""
+            1. Launch browser
+            2. Navigate to url 'http://automationexercise.com'
+            3. Verify that home page is visible successfully
+            4. Click on 'Signup / Login' button
+            5. Verify 'Login to your account' is visible
+            6. Enter correct email address and password
+            7. Click 'login' button
+            8. Verify that 'Logged in as username' is visible
+            9. Click 'Logout' button
+            10. Verify that user is navigated to login page""")
     public void logoutUser() throws IOException {
         TestCase2.loginUserWithCorrectEmailAndPassword();
         verifyThatUserIsNavigatedToLoginPage();

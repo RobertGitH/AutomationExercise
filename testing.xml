@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="methods" thread-count="6">
+<suite name="Suite" parallel="methods" thread-count="10">
     <test name="Test">
         <classes>
             <class name="com.automationexercise.tests.TestCase1"/>
@@ -9,6 +9,10 @@
             <class name="com.automationexercise.tests.TestCase4"/>
             <class name="com.automationexercise.tests.TestCase5"/>
             <class name="com.automationexercise.tests.TestCase6"/>
+            <class name="com.automationexercise.tests.TestCase7"/>
+            <class name="com.automationexercise.tests.TestCase8"/>
+            <class name="com.automationexercise.tests.TestCase9"/>
+            <class name="com.automationexercise.tests.TestCase10"/>
         </classes>
     </test>
 </suite>

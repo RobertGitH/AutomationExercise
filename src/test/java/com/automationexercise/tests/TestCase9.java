@@ -26,14 +26,15 @@ public class TestCase9 extends TestBasic {
     @Test(description = "Test Case 9: Search Product")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Search Product")
-    @Description("1. Launch browser\n" +
-            "2. Navigate to url 'http://automationexercise.com'\n" +
-            "3. Verify that home page is visible successfully\n" +
-            "4. Click on 'Products' button\n" +
-            "5. Verify user is navigated to ALL PRODUCTS page successfully\n" +
-            "6. Enter product name in search input and click search button\n" +
-            "7. Verify 'SEARCHED PRODUCTS' is visible\n" +
-            "8. Verify all the products related to search are visible")
+    @Description("""
+            1. Launch browser
+            2. Navigate to url 'http://automationexercise.com'
+            3. Verify that home page is visible successfully
+            4. Click on 'Products' button
+            5. Verify user is navigated to ALL PRODUCTS page successfully
+            6. Enter product name in search input and click search button
+            7. Verify 'SEARCHED PRODUCTS' is visible
+            8. Verify all the products related to search are visible""")
     public void searchProduct() {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         TestCase8.verifyUserIsNavigatedToAllProductsPageSuccessfully();

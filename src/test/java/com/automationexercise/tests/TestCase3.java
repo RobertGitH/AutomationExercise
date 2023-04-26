@@ -9,17 +9,19 @@ import org.testng.annotations.Test;
 @Epic("Regression Tests")
 @Feature("Login User")
 public class TestCase3 extends TestBasic {
+
     @Test(description = "Test Case 3: Login User with incorrect email and password")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Login User with incorrect email and password")
-    @Description("1. Launch browser\n" +
-            "2. Navigate to url 'http://automationexercise.com'\n" +
-            "3. Verify that home page is visible successfully\n" +
-            "4. Click on 'Signup / Login' button\n" +
-            "5. Verify 'Login to your account' is visible\n" +
-            "6. Enter incorrect email address and password\n" +
-            "7. Click 'login' button\n" +
-            "8. Verify error 'Your email or password is incorrect!' is visible")
+    @Description("""
+            1. Launch browser
+            2. Navigate to url 'http://automationexercise.com'
+            3. Verify that home page is visible successfully
+            4. Click on 'Signup / Login' button
+            5. Verify 'Login to your account' is visible
+            6. Enter incorrect email address and password
+            7. Click 'login' button
+            8. Verify error 'Your email or password is incorrect!' is visible""")
     public void loginUserWithIncorrectEmailAndPassword() {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         TestCase2.verifyLoginToYourAccountIsVisible();
