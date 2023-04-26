@@ -22,6 +22,15 @@ public class CartPage {
     @FindBy(xpath = "//p[contains(@class, 'cart_total_price')]")
     private List<WebElement> totalPrice;
 
+    @FindBy(css = "li[class='active']")
+    private WebElement shoppingCart;
+
+    @FindBy(css = "a[class='btn btn-default check_out']")
+    private WebElement proceedToCheckoutButton;
+
+    @FindBy(css = "a[href='/login'] u")
+    private WebElement registerLoginButton;
+
     private WebDriver driver;
 
     public CartPage(WebDriver driver) {
@@ -55,5 +64,19 @@ public class CartPage {
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
+    }
+
+    public WebElement getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public CartPage proceedToCheckoutButtonClick() {
+        proceedToCheckoutButton.click();
+        return this;
+    }
+
+    public LoginSignupPage registerLoginButtonClick() {
+        registerLoginButton.click();
+        return new LoginSignupPage(driver);
     }
 }

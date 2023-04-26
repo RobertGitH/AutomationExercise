@@ -13,14 +13,9 @@ import java.util.List;
 @Feature("Search Product")
 public class TestCase9 extends TestBasic {
 
-    String search;
+    String search = PropertiesLoader.loadProperty("search.product.input");
 
-    {
-        try {
-            search = PropertiesLoader.loadProperty("search.product.input");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public TestCase9() throws IOException {
     }
 
     @Test(description = "Test Case 9: Search Product")

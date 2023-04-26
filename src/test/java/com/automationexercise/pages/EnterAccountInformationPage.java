@@ -1,5 +1,6 @@
 package com.automationexercise.pages;
 
+import com.automationexercise.tests.TestBasic;
 import com.automationexercise.utils.Util;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class EnterAccountInformationPage {
+public class EnterAccountInformationPage extends TestBasic {
 
     @FindBy(xpath = "//b[contains(.,'Enter Account Information')]")
     private WebElement enterAccountInformation;
@@ -77,8 +78,7 @@ public class EnterAccountInformationPage {
         return enterAccountInformation;
     }
 
-    public AccountCreatedPage fillAccountDetails(String password, String day, String month, String year, String firstName, String lastName, String company,
-                                                 String address1, String address2, String country, String state, String city, String zipcode, String mobileNumber) {
+    public AccountCreatedPage fillAccountDetails() {
         titleMrCheckbox.click();
         passwordInput.sendKeys(password + Util.generateCurrentDateAndTime());
         Select days = new Select(daysSelect);

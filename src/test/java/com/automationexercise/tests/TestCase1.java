@@ -73,8 +73,7 @@ public class TestCase1 extends TestBasic {
     @Step("14. Verify that 'ACCOUNT CREATED!' is visible")
     private void verifyThatAccountCreatedIsVisible() {
         String accountCreatedText = new EnterAccountInformationPage(getDriver())
-                .fillAccountDetails("password", "30", "4", "1996", "Robert", "Rozwadowski", "Robert", "1134 Columbia Road",
-                        "Poland", "United States", "Texas", "Dallas", "98607", "111222333")
+                .fillAccountDetails()
                 .getAccountCreated()
                 .getText();
         Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "14. Verify that 'ACCOUNT CREATED!' is visible");

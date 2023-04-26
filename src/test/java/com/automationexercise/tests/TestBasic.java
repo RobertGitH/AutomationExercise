@@ -9,6 +9,22 @@ import org.testng.annotations.BeforeMethod;
 import java.io.IOException;
 
 public class TestBasic {
+
+    public String firstName = "Robert";
+    public String lastName = "Rozwadowski";
+    public String password = "pass";
+    public String day = "30";
+    public String month = "4";
+    public String year = "1996";
+    public String company = "Pierogi";
+    public String address1 = "1134 Columbia Road";
+    public String address2 = "Columbia";
+    public String country = "United States";
+    public String state = "Texas";
+    public String city = "Dallas";
+    public String zipcode = "98607";
+    public String mobileNumber = "111222333";
+
     protected static ThreadLocal<WebDriver> tdriver = new ThreadLocal<>();
 
     public static synchronized WebDriver getDriver() {
