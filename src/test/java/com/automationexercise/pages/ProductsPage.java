@@ -60,11 +60,10 @@ public class ProductsPage {
     }
 
     public List<String> getProductsSearchNames() {
-        List<String> searchNames = searchResultsNames
+        return searchResultsNames
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
-        return searchNames;
     }
 
     public CartPage addProductsToCart() {

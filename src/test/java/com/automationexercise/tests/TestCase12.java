@@ -48,8 +48,8 @@ public class TestCase12 extends TestBasic {
         List<String> totalPrices = new CartPage(getDriver()).getTotalPrices();
 
         for (int i = 0; i < 2; i++) {
-            Assert.assertEquals(totalPrices.get(i), prices.get(i));
-            Assert.assertEquals(quantity.get(i), "1");
+            Assert.assertEquals(totalPrices.get(i), prices.get(i), "10. Verify their prices and total price");
+            Assert.assertEquals(quantity.get(i), "1", "10. Verify their quantity");
             System.out.println(i + ". Prices = Total Prices | " + prices.get(i) + " = " + totalPrices.get(i));
             System.out.println(i + ". Quantity = 1 | " + quantity.get(i).equals("1"));
         }

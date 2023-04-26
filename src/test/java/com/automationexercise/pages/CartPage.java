@@ -30,34 +30,30 @@ public class CartPage {
     }
 
     public List<String> getProductsNames() {
-        List<String> productNames = productName
+        return productName
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
-        return productNames;
     }
 
     public List<String> getPrices() {
-        List<String> prices = price
+        return price
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
-        return prices;
     }
 
     public List<String> getQuantity() {
-        List<String> q = quantity
+        return quantity
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
-        return q;
     }
 
     public List<String> getTotalPrices() {
-        List<String> totalPrices = totalPrice
+        return totalPrice
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
-        return totalPrices;
     }
 }

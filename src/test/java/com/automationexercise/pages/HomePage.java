@@ -27,6 +27,9 @@ public class HomePage {
     @FindBy(css = "a[href='/view_cart']")
     private WebElement cartButton;
 
+    @FindBy(css = "a[href='/product_details/1']")
+    private WebElement viewProduct1Button;
+
     //footer
     @FindBy(css = "div[class='single-widget'] h2")
     private WebElement subscription;
@@ -74,6 +77,11 @@ public class HomePage {
     public CartPage cartButtonClick() {
         cartButton.click();
         return new CartPage(driver);
+    }
+
+    public ProductDetailPage viewProduct1ButtonClick() {
+        viewProduct1Button.click();
+        return new ProductDetailPage(driver);
     }
 
     //footer
