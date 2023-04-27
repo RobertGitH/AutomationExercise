@@ -1,6 +1,7 @@
 package com.automationexercise.tests;
 
 import com.automationexercise.pages.*;
+import com.automationexercise.utils.JSONReader;
 import com.automationexercise.utils.Util;
 import io.qameta.allure.*;
 import org.json.simple.parser.ParseException;
@@ -8,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 @Epic("Regression Tests")
 @Feature("Place Order")
@@ -45,7 +47,8 @@ public class TestCase14 extends TestBasic {
         verifyThatCartPageIsDisplayed();
         verifyAccountCreatedAndClickContinueButton();
         verifyLoggedInAsUsernameAtTop();
-        new HomePage(getDriver()).cartButtonClick().proceedToCheckoutButtonClick();
+        verifyAddressDetailsAndReviewYourOrder();
+        new CheckoutPage(getDriver()).enterComment("Sed fringilla aliquet turpis, ut vestibulum orci vulputate sit amet.");
     }
 
     @Step("6. Verify that cart page is displayed")
@@ -77,5 +80,50 @@ public class TestCase14 extends TestBasic {
                 .getUsername()
                 .getText();
         Assert.assertEquals(username, name, "11. Verify ' Logged in as username' at top");
+    }
+
+    @Step("14. Verify Address Details and Review Your Order")
+    private void verifyAddressDetailsAndReviewYourOrder() throws IOException, ParseException {
+        List<String> addressDelivery = new HomePage(getDriver())
+                .cartButtonClick()
+                .proceedToCheckoutLoggedButtonClick()
+                .getAddressDelivery();
+        List<String> addressInvoice = new CheckoutPage(getDriver()).getAddressInvoice();
+
+        for (int i = 1; i < 8; i++) {
+            Assert.assertEquals(addressDelivery.get(i), addressInvoice.get(i), "14. Verify Address Details");
+            System.out.println(addressDelivery.get(i) + " = " + addressInvoice.get(i));
+        }
+
+        String no1 = "Mr. " + JSONReader.accountDetails("firstName") + " " + JSONReader.accountDetails("lastName");
+        String no2 = JSONReader.accountDetails("company");
+        String no3 = JSONReader.accountDetails("address1");
+        String no4 = JSONReader.accountDetails("address2");
+        String no5 = JSONReader.accountDetails("city") + " " + JSONReader.accountDetails("state") + " " + JSONReader.accountDetails("zipcode");
+        String no6 = JSONReader.accountDetails("country");
+        String no7 = JSONReader.accountDetails("mobileNumber");
+
+        Assert.assertEquals(addressDelivery.get(1), no1, "14. Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(2), no2, "14. Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(3), no3, "14. Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(4), no4, "14. Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(5), no5, "14. Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(6), no6, "14. Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(7), no7, "14. Verify Address Details");
+
+        List<String> productNames = new CartPage(getDriver()).getProductsNames();
+        List<String> prices = new CartPage(getDriver()).getPrices();
+        List<String> quantity = new CartPage(getDriver()).getQuantity();
+        List<String> totalPrices = new CartPage(getDriver()).getTotalPrices();
+        String totalAmount = new CheckoutPage(getDriver()).getTotalAmount().getText();
+
+        for (int i = 0; i < 2; i++) {
+            Assert.assertEquals(totalPrices.get(i), prices.get(i), "14. Verify Review Your Order");
+            Assert.assertEquals(quantity.get(i), "1", "14. Verify Review Your Order");
+        }
+
+        Assert.assertEquals(productNames.get(0), "Blue Top", "14. Verify Review Your Order");
+        Assert.assertEquals(productNames.get(1), "Men Tshirt", "14. Verify Review Your Order");
+        Assert.assertEquals(totalAmount, "Rs. 900", "14. Verify Review Your Order");
     }
 }

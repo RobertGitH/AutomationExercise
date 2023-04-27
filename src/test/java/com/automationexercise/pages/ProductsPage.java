@@ -1,5 +1,6 @@
 package com.automationexercise.pages;
 
+import com.automationexercise.utils.SeleniumHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,8 +69,10 @@ public class ProductsPage {
 
     public CartPage addProductsToCart() {
         addToCartButton1.click();
+        SeleniumHelper.waitForElementToBeClickable(driver, continueShoppingButton);
         continueShoppingButton.click();
         addToCartButton2.click();
+        SeleniumHelper.waitForElementToBeClickable(driver, viewCartButton);
         viewCartButton.click();
         return new CartPage(driver);
     }

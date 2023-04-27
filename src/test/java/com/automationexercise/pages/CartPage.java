@@ -75,6 +75,11 @@ public class CartPage {
         return this;
     }
 
+    public CheckoutPage proceedToCheckoutLoggedButtonClick() {
+        proceedToCheckoutButton.click();
+        return new CheckoutPage(driver);
+    }
+
     public LoginSignupPage registerLoginButtonClick() {
         registerLoginButton.click();
         return new LoginSignupPage(driver);
