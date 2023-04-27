@@ -8,12 +8,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.io.IOException;
+import java.time.Duration;
 
 public class TestBasic {
 
     //test data
-    public String name = "name" + Util.generateCurrentDateAndTime();
-    public String email = "email" + Util.generateCurrentDateAndTime() + "@o2.pl";
     public static String correctName = "robert212197331002"; //created account name
     public static String correctEmail = "robert212197331002@test.pl"; //created account email
     public static String correctPassword = "robert212197331002@test.pl"; //created account password
@@ -45,8 +44,8 @@ public class TestBasic {
         WebDriver driver = BrowserManager.doBrowserSetup();
         tdriver.set(driver);
         getDriver().get(url);
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10L));
         //getDriver().manage().window().maximize();
-        //getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10L));
     }
 
     @AfterMethod

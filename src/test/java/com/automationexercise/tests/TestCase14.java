@@ -1,6 +1,7 @@
 package com.automationexercise.tests;
 
 import com.automationexercise.pages.*;
+import com.automationexercise.utils.Util;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,6 +9,9 @@ import org.testng.annotations.Test;
 @Epic("Regression Tests")
 @Feature("Place Order")
 public class TestCase14 extends TestBasic {
+
+    String name = "name" + Util.generateCurrentDateAndTime();
+    String email = "email" + Util.generateCurrentDateAndTime() + "@o2.pl";
 
     @Test(description = "Test Case 14: Place Order: Register while Checkout")
     @Severity(SeverityLevel.CRITICAL)
@@ -55,7 +59,7 @@ public class TestCase14 extends TestBasic {
         String accountCreatedText = new CartPage(getDriver())
                 .proceedToCheckoutButtonClick()
                 .registerLoginButtonClick()
-                .fillCorrectSignup()
+                .fillCorrectSignup(name, email)
                 .fillAccountDetails()
                 .getAccountCreated()
                 .getText();

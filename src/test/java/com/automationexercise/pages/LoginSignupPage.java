@@ -55,7 +55,7 @@ public class LoginSignupPage extends TestBasic {
         signupButton.click();
     }
 
-    public EnterAccountInformationPage fillCorrectSignup() {
+    public EnterAccountInformationPage fillCorrectSignup(String name, String email) {
         fillSignup(name, email);
         return new EnterAccountInformationPage(driver);
     }

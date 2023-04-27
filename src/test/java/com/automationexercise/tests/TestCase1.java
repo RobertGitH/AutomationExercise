@@ -1,6 +1,7 @@
 package com.automationexercise.tests;
 
 import com.automationexercise.pages.*;
+import com.automationexercise.utils.Util;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,6 +9,9 @@ import org.testng.annotations.Test;
 @Epic("Regression Tests")
 @Feature("Register User")
 public class TestCase1 extends TestBasic {
+
+    String name = "name" + Util.generateCurrentDateAndTime();
+    String email = "email" + Util.generateCurrentDateAndTime() + "@o2.pl";
 
     @Test(description = "Test Case 1: Register User")
     @Severity(SeverityLevel.CRITICAL)
@@ -60,7 +64,7 @@ public class TestCase1 extends TestBasic {
     @Step("8. Verify that 'ENTER ACCOUNT INFORMATION' is visible")
     private void verifyThatEnterAccountInformationIsVisible() {
         String enterAccountInformationText = new LoginSignupPage(getDriver())
-                .fillCorrectSignup()
+                .fillCorrectSignup(name, email)
                 .getEnterAccountInformation()
                 .getText();
         Assert.assertEquals(enterAccountInformationText, "ENTER ACCOUNT INFORMATION", "8. Verify that 'ENTER ACCOUNT INFORMATION' is visible");

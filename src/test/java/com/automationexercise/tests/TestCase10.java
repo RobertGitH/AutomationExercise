@@ -5,8 +5,6 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 @Epic("Regression Tests")
 @Feature("Verify")
 public class TestCase10 extends TestBasic {
@@ -22,7 +20,7 @@ public class TestCase10 extends TestBasic {
             5. Verify text 'SUBSCRIPTION'
             6. Enter email address in input and click arrow button
             7. Verify success message 'You have been successfully subscribed!' is visible""")
-    public void verifySubscriptionInHomePage() throws IOException {
+    public void verifySubscriptionInHomePage() {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         verifyTextSubscription();
         verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible();
@@ -37,7 +35,7 @@ public class TestCase10 extends TestBasic {
     }
 
     @Step("7. Verify success message 'You have been successfully subscribed!' is visible")
-    public static void verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible() throws IOException {
+    public static void verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible() {
         String messageAlert = new HomePage(getDriver())
                 .fillSubscribe()
                 .getAlertSuccessSubscribe()
