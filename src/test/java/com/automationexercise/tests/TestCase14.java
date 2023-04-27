@@ -3,8 +3,11 @@ package com.automationexercise.tests;
 import com.automationexercise.pages.*;
 import com.automationexercise.utils.Util;
 import io.qameta.allure.*;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 @Epic("Regression Tests")
 @Feature("Place Order")
@@ -37,7 +40,7 @@ public class TestCase14 extends TestBasic {
             18. Verify success message 'Your order has been placed successfully!'
             19. Click 'Delete Account' button
             20. Verify 'ACCOUNT DELETED!' and click 'Continue' button""")
-    public void placeOrderRegisterWhileCheckout() {
+    public void placeOrderRegisterWhileCheckout() throws IOException, ParseException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         verifyThatCartPageIsDisplayed();
         verifyAccountCreatedAndClickContinueButton();
@@ -55,7 +58,7 @@ public class TestCase14 extends TestBasic {
     }
 
     @Step("10. Verify 'ACCOUNT CREATED!' and click 'Continue' button")
-    private void verifyAccountCreatedAndClickContinueButton() {
+    private void verifyAccountCreatedAndClickContinueButton() throws IOException, ParseException {
         String accountCreatedText = new CartPage(getDriver())
                 .proceedToCheckoutButtonClick()
                 .registerLoginButtonClick()

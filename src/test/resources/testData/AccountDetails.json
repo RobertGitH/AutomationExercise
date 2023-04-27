@@ -1,0 +1,15 @@
+{
+  "firstName": "Robert",
+  "lastName": "Rozwadowski",
+  "day": "1",
+  "month": "1",
+  "year": "1996",
+  "company": "Pierogi",
+  "address1": "1134 Columbia Road",
+  "address2": "Most",
+  "country": "United States",
+  "state": "Texas",
+  "city": "Dallas",
+  "zipcode": "98607",
+  "mobileNumber": "111222333"
+}

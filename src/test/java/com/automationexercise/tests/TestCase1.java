@@ -3,8 +3,11 @@ package com.automationexercise.tests;
 import com.automationexercise.pages.*;
 import com.automationexercise.utils.Util;
 import io.qameta.allure.*;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 @Epic("Regression Tests")
 @Feature("Register User")
@@ -35,7 +38,7 @@ public class TestCase1 extends TestBasic {
             16. Verify that 'Logged in as username' is visible
             17. Click 'Delete Account' button
             18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button""")
-    public void registerUser() {
+    public void registerUser() throws IOException, ParseException {
         verifyThatHomePageIsVisibleSuccessfully();
         verifyNewUserSignupIsVisible();
         verifyThatEnterAccountInformationIsVisible();
@@ -71,7 +74,7 @@ public class TestCase1 extends TestBasic {
     }
 
     @Step("14. Verify that 'ACCOUNT CREATED!' is visible")
-    private void verifyThatAccountCreatedIsVisible() {
+    private void verifyThatAccountCreatedIsVisible() throws IOException, ParseException {
         String accountCreatedText = new EnterAccountInformationPage(getDriver())
                 .fillAccountDetails()
                 .getAccountCreated()

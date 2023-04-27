@@ -2,6 +2,7 @@ package com.automationexercise.tests;
 
 import com.automationexercise.pages.HomePage;
 import io.qameta.allure.*;
+import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class TestCase11 extends TestBasic {
             5. Verify text 'SUBSCRIPTION'
             6. Enter email address in input and click arrow button
             7. Verify success message 'You have been successfully subscribed!' is visible""")
-    public void verifySubscriptionInCartPage() throws IOException {
+    public void verifySubscriptionInCartPage() throws IOException, ParseException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         new HomePage(getDriver()).cartButtonClick();
         TestCase10.verifyTextSubscription();

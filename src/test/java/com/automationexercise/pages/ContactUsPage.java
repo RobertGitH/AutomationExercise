@@ -1,6 +1,5 @@
 package com.automationexercise.pages;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.All;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,6 +36,7 @@ public class ContactUsPage {
     private WebElement homePageButton;
 
     private WebDriver driver;
+
     public ContactUsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
@@ -53,7 +53,7 @@ public class ContactUsPage {
         messageInput.sendKeys("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lobortis eros eget cursus placerat. " +
                 "Pellentesque id porttitor est. Morbi aliquet massa sit amet finibus fermentum. Pellentesque eu ante a nunc pulvinar blandit a a orci." +
                 " Mauris massa tellus, posuere vitae ante vel, feugiat sodales ante. Suspendisse commodo diam venenatis scelerisque ornare.");
-        uploadFileInput.sendKeys(System.getProperty("user.dir")+"\\src\\test\\resources\\sample.txt");
+        uploadFileInput.sendKeys(System.getProperty("user.dir") + "\\src\\test\\resources\\sample.txt");
         return this;
     }
 

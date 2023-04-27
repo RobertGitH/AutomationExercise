@@ -1,11 +1,16 @@
 package com.automationexercise.pages;
 
 import com.automationexercise.tests.TestBasic;
+import com.automationexercise.utils.JSONReader;
+import com.automationexercise.utils.Util;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import java.io.IOException;
 
 public class EnterAccountInformationPage extends TestBasic {
 
@@ -77,28 +82,29 @@ public class EnterAccountInformationPage extends TestBasic {
         return enterAccountInformation;
     }
 
-    public AccountCreatedPage fillAccountDetails() {
+    public AccountCreatedPage fillAccountDetails() throws IOException, ParseException {
+        String password = "pass" + Util.generateCurrentDateAndTime();
         titleMrCheckbox.click();
         passwordInput.sendKeys(password);
         Select days = new Select(daysSelect);
-        days.selectByValue(day);
+        days.selectByValue(JSONReader.accountDetails("day"));
         Select months = new Select(monthsSelect);
-        months.selectByValue(month);
+        months.selectByValue(JSONReader.accountDetails("month"));
         Select years = new Select(yearsSelect);
-        years.selectByValue(year);
+        years.selectByValue(JSONReader.accountDetails("year"));
         newsletterCheckbox.click();
         specialOffersCheckbox.click();
-        firstNameInput.sendKeys(firstName);
-        lastNameInput.sendKeys(lastName);
-        companyInput.sendKeys(company);
-        address1Input.sendKeys(address1);
-        address2Input.sendKeys(address2);
+        firstNameInput.sendKeys(JSONReader.accountDetails("firstName"));
+        lastNameInput.sendKeys(JSONReader.accountDetails("lastName"));
+        companyInput.sendKeys(JSONReader.accountDetails("company"));
+        address1Input.sendKeys(JSONReader.accountDetails("address1"));
+        address2Input.sendKeys(JSONReader.accountDetails("address2"));
         Select countrySelector = new Select(countrySelect);
-        countrySelector.selectByValue(country);
-        stateInput.sendKeys(state);
-        cityInput.sendKeys(city);
-        zipcodeInput.sendKeys(zipcode);
-        mobileNumberInput.sendKeys(mobileNumber);
+        countrySelector.selectByValue(JSONReader.accountDetails("country"));
+        stateInput.sendKeys(JSONReader.accountDetails("state"));
+        cityInput.sendKeys(JSONReader.accountDetails("city"));
+        zipcodeInput.sendKeys(JSONReader.accountDetails("zipcode"));
+        mobileNumberInput.sendKeys(JSONReader.accountDetails("mobileNumber"));
         createAccountButton.click();
         return new AccountCreatedPage(driver);
     }

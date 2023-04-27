@@ -2,7 +2,9 @@ package com.automationexercise.tests;
 
 import com.automationexercise.pages.HomePage;
 import com.automationexercise.pages.LoginSignupPage;
+import com.automationexercise.utils.JSONReader;
 import io.qameta.allure.*;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,7 +26,7 @@ public class TestCase2 extends TestBasic {
             6. Enter correct email address and password
             7. Click 'login' button
             8. Verify that 'Logged in as username' is visible""")
-    public static void loginUserWithCorrectEmailAndPassword() throws IOException {
+    public static void loginUserWithCorrectEmailAndPassword() throws IOException, ParseException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         verifyLoginToYourAccountIsVisible();
         verifyThatLoggedInAsUsernameIsVisible();
@@ -40,11 +42,11 @@ public class TestCase2 extends TestBasic {
     }
 
     @Step("8. Verify that 'Logged in as username' is visible")
-    private static void verifyThatLoggedInAsUsernameIsVisible() {
+    private static void verifyThatLoggedInAsUsernameIsVisible() throws IOException, ParseException {
         String username = new LoginSignupPage(getDriver())
-                .fillCorrectLogin(correctEmail, correctPassword)
+                .fillCorrectLogin(JSONReader.existingUser("email"), JSONReader.existingUser("password"))
                 .getUsername()
                 .getText();
-        Assert.assertEquals(username, correctName, "8. Verify that 'Logged in as username' is visible");
+        Assert.assertEquals(username, JSONReader.existingUser("name"), "8. Verify that 'Logged in as username' is visible");
     }
 }

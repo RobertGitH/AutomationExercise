@@ -1,10 +1,14 @@
 package com.automationexercise.pages;
 
 import com.automationexercise.tests.TestBasic;
+import com.automationexercise.utils.JSONReader;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.io.IOException;
 
 public class LoginSignupPage extends TestBasic {
 
@@ -60,8 +64,8 @@ public class LoginSignupPage extends TestBasic {
         return new EnterAccountInformationPage(driver);
     }
 
-    public LoginSignupPage fillIncorrectSignup() {
-        fillSignup(correctName, correctEmail);
+    public LoginSignupPage fillIncorrectSignup() throws IOException, ParseException {
+        fillSignup(JSONReader.existingUser("name"), JSONReader.existingUser("email"));
         return this;
     }
 

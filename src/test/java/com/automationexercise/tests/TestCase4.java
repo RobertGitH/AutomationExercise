@@ -2,6 +2,7 @@ package com.automationexercise.tests;
 
 import com.automationexercise.pages.LoggedHomePage;
 import io.qameta.allure.*;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,7 +26,7 @@ public class TestCase4 extends TestBasic {
             8. Verify that 'Logged in as username' is visible
             9. Click 'Logout' button
             10. Verify that user is navigated to login page""")
-    public void logoutUser() throws IOException {
+    public void logoutUser() throws IOException, ParseException {
         TestCase2.loginUserWithCorrectEmailAndPassword();
         verifyThatUserIsNavigatedToLoginPage();
     }

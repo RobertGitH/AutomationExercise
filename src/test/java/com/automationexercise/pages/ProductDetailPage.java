@@ -1,5 +1,6 @@
 package com.automationexercise.pages;
 
+import com.automationexercise.utils.SeleniumHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,7 +32,7 @@ public class ProductDetailPage {
     @FindBy(css = "button[class='btn btn-default cart']")
     private WebElement addToCartButton;
 
-    @FindBy(css = "p.text-center:nth-child(2) > a:nth-child(1)")
+    @FindBy(css = "a[href='/view_cart'] u")
     private WebElement viewCartButton;
 
     private WebDriver driver;
@@ -77,6 +78,7 @@ public class ProductDetailPage {
     }
 
     public CartPage viewCartButtonClick() {
+        SeleniumHelper.waitForElementToBeClickable(driver, viewCartButton);
         viewCartButton.click();
         return new CartPage(driver);
     }
