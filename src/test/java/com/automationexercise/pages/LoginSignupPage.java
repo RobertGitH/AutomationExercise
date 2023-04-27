@@ -1,11 +1,12 @@
 package com.automationexercise.pages;
 
+import com.automationexercise.tests.TestBasic;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginSignupPage {
+public class LoginSignupPage extends TestBasic {
 
     @FindBy(css = "div[class='login-form'] h2")
     private WebElement loginToYourAccount;
@@ -54,13 +55,13 @@ public class LoginSignupPage {
         signupButton.click();
     }
 
-    public EnterAccountInformationPage fillCorrectSignup(String name, String email) {
+    public EnterAccountInformationPage fillCorrectSignup() {
         fillSignup(name, email);
         return new EnterAccountInformationPage(driver);
     }
 
-    public LoginSignupPage fillIncorrectSignup(String name, String email) {
-        fillSignup(name, email);
+    public LoginSignupPage fillIncorrectSignup() {
+        fillSignup(correctName, correctEmail);
         return this;
     }
 

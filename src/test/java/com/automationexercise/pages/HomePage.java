@@ -1,14 +1,12 @@
 package com.automationexercise.pages;
 
-import com.automationexercise.utils.PropertiesLoader;
+import com.automationexercise.tests.TestBasic;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.io.IOException;
-
-public class HomePage {
+public class HomePage extends TestBasic {
 
     @FindBy(css = "div[class='item active'] img[alt='demo website for practice']")
     private WebElement girlImgResponsive;
@@ -89,8 +87,8 @@ public class HomePage {
         return subscription;
     }
 
-    public HomePage fillSubscribe() throws IOException {
-        subscribeEmailInput.sendKeys(PropertiesLoader.loadProperty("correct.email"));
+    public HomePage fillSubscribe() {
+        subscribeEmailInput.sendKeys(correctEmail);
         subscribeButton.click();
         return this;
     }

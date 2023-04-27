@@ -11,12 +11,15 @@ import java.io.IOException;
 
 public class TestBasic {
 
-    String name = "name" + Util.generateCurrentDateAndTime();
-    String email = "email" + Util.generateCurrentDateAndTime() + "@o2.pl";
-
+    //test data
+    public String name = "name" + Util.generateCurrentDateAndTime();
+    public String email = "email" + Util.generateCurrentDateAndTime() + "@o2.pl";
+    public static String correctName = "robert212197331002"; //created account name
+    public static String correctEmail = "robert212197331002@test.pl"; //created account email
+    public static String correctPassword = "robert212197331002@test.pl"; //created account password
     public String firstName = "Robert";
     public String lastName = "Rozwadowski";
-    public String password = "pass";
+    public String password = "pass" + Util.generateCurrentDateAndTime();
     public String day = "30";
     public String month = "4";
     public String year = "1996";

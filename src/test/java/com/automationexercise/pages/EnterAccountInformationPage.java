@@ -1,7 +1,6 @@
 package com.automationexercise.pages;
 
 import com.automationexercise.tests.TestBasic;
-import com.automationexercise.utils.Util;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -80,7 +79,7 @@ public class EnterAccountInformationPage extends TestBasic {
 
     public AccountCreatedPage fillAccountDetails() {
         titleMrCheckbox.click();
-        passwordInput.sendKeys(password + Util.generateCurrentDateAndTime());
+        passwordInput.sendKeys(password);
         Select days = new Select(daysSelect);
         days.selectByValue(day);
         Select months = new Select(monthsSelect);

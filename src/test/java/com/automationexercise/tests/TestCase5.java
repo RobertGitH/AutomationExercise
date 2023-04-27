@@ -1,12 +1,9 @@
 package com.automationexercise.tests;
 
 import com.automationexercise.pages.LoginSignupPage;
-import com.automationexercise.utils.PropertiesLoader;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 @Epic("Regression Tests")
 @Feature("Register User")
@@ -24,19 +21,16 @@ public class TestCase5 extends TestBasic {
             6. Enter name and already registered email address
             7. Click 'Signup' button
             8. Verify error 'Email Address already exist!' is visible""")
-    public void registerUserWithExistingEmail() throws IOException {
+    public void registerUserWithExistingEmail() {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         TestCase1.verifyNewUserSignupIsVisible();
         verifyErrorEmailAddressAlreadyExistIsVisible();
     }
 
     @Step("8. Verify error 'Email Address already exist!' is visible")
-    private void verifyErrorEmailAddressAlreadyExistIsVisible() throws IOException {
-        String name = PropertiesLoader.loadProperty("correct.name");
-        String email = PropertiesLoader.loadProperty("correct.email");
-
+    private void verifyErrorEmailAddressAlreadyExistIsVisible() {
         String emailAddressAlreadyExistText = new LoginSignupPage(getDriver())
-                .fillIncorrectSignup(name, email)
+                .fillIncorrectSignup()
                 .getEmailAddressAlreadyExist()
                 .getText();
         Assert.assertEquals(emailAddressAlreadyExistText, "Email Address already exist!", "8. Verify error 'Email Address already exist!' is visible");

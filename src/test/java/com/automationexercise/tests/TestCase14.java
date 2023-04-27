@@ -55,7 +55,7 @@ public class TestCase14 extends TestBasic {
         String accountCreatedText = new CartPage(getDriver())
                 .proceedToCheckoutButtonClick()
                 .registerLoginButtonClick()
-                .fillCorrectSignup(name, email)
+                .fillCorrectSignup()
                 .fillAccountDetails()
                 .getAccountCreated()
                 .getText();

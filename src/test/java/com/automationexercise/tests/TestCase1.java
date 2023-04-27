@@ -60,7 +60,7 @@ public class TestCase1 extends TestBasic {
     @Step("8. Verify that 'ENTER ACCOUNT INFORMATION' is visible")
     private void verifyThatEnterAccountInformationIsVisible() {
         String enterAccountInformationText = new LoginSignupPage(getDriver())
-                .fillCorrectSignup(name, email)
+                .fillCorrectSignup()
                 .getEnterAccountInformation()
                 .getText();
         Assert.assertEquals(enterAccountInformationText, "ENTER ACCOUNT INFORMATION", "8. Verify that 'ENTER ACCOUNT INFORMATION' is visible");

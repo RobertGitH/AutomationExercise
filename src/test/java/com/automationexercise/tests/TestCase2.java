@@ -2,7 +2,6 @@ package com.automationexercise.tests;
 
 import com.automationexercise.pages.HomePage;
 import com.automationexercise.pages.LoginSignupPage;
-import com.automationexercise.utils.PropertiesLoader;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -41,15 +40,11 @@ public class TestCase2 extends TestBasic {
     }
 
     @Step("8. Verify that 'Logged in as username' is visible")
-    private static void verifyThatLoggedInAsUsernameIsVisible() throws IOException {
-        String name = PropertiesLoader.loadProperty("correct.name");
-        String email = PropertiesLoader.loadProperty("correct.email");
-        String password = PropertiesLoader.loadProperty("correct.password");
-
+    private static void verifyThatLoggedInAsUsernameIsVisible() {
         String username = new LoginSignupPage(getDriver())
-                .fillCorrectLogin(email, password)
+                .fillCorrectLogin(correctEmail, correctPassword)
                 .getUsername()
                 .getText();
-        Assert.assertEquals(username, name, "8. Verify that 'Logged in as username' is visible");
+        Assert.assertEquals(username, correctName, "8. Verify that 'Logged in as username' is visible");
     }
 }
