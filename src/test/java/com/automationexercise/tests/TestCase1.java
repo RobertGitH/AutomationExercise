@@ -91,13 +91,13 @@ public class TestCase1 extends TestBasic {
         Assert.assertEquals(username, name, "16. Verify that 'Logged in as username' is visible");
     }
 
-    @Step("18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button")
-    private void verifyThatAccountDeletedIsVisibleAndClickContinueButton() {
+    @Step("Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button")
+    public static void verifyThatAccountDeletedIsVisibleAndClickContinueButton() {
         String accountDeletedText = new LoggedHomePage(getDriver())
                 .deleteAccountButtonClick()
                 .getAccountDeleted()
                 .getText();
-        Assert.assertEquals(accountDeletedText, "ACCOUNT DELETED!", "18. Verify that 'ACCOUNT DELETED!' is visible");
+        Assert.assertEquals(accountDeletedText, "ACCOUNT DELETED!", "Verify that 'ACCOUNT DELETED!' is visible");
         new AccountDeletedPage(getDriver()).continueButtonClick();
     }
 }

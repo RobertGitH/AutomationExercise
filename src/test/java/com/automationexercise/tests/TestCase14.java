@@ -49,16 +49,16 @@ public class TestCase14 extends TestBasic {
         verifyLoggedInAsUsernameAtTop();
         verifyAddressDetailsAndReviewYourOrder();
         verifySuccessMessageCongratulationsYourOrderHasBeenConfirmed();
-        verifyAccountDeletedAndClickContinueButton();
+        TestCase1.verifyThatAccountDeletedIsVisibleAndClickContinueButton();
     }
 
-    @Step("6. Verify that cart page is displayed")
-    private void verifyThatCartPageIsDisplayed() {
+    @Step("Verify that cart page is displayed")
+    public static void verifyThatCartPageIsDisplayed() {
         String shoppingCartText = new ProductsPage(getDriver())
                 .addProductsToCart()
                 .getShoppingCart()
                 .getText();
-        Assert.assertEquals(shoppingCartText, "Shopping Cart", "6. Verify that cart page is displayed");
+        Assert.assertEquals(shoppingCartText, "Shopping Cart", "Verify that cart page is displayed");
     }
 
     @Step("10. Verify 'ACCOUNT CREATED!' and click 'Continue' button")
@@ -83,19 +83,19 @@ public class TestCase14 extends TestBasic {
         Assert.assertEquals(username, name, "11. Verify ' Logged in as username' at top");
     }
 
-    @Step("14. Verify Address Details and Review Your Order")
-    private void verifyAddressDetailsAndReviewYourOrder() throws IOException, ParseException {
+    @Step("Verify Address Details and Review Your Order")
+    public static void verifyAddressDetailsAndReviewYourOrder() throws IOException, ParseException {
         List<String> addressDelivery = new HomePage(getDriver())
                 .cartButtonClick()
                 .proceedToCheckoutLoggedButtonClick()
                 .getAddressDelivery();
         List<String> addressInvoice = new CheckoutPage(getDriver()).getAddressInvoice();
 
-        Assert.assertEquals(addressDelivery.get(0), "YOUR DELIVERY ADDRESS", "14. Verify Address Details");
-        Assert.assertEquals(addressInvoice.get(0), "YOUR BILLING ADDRESS", "14. Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(0), "YOUR DELIVERY ADDRESS", "Verify Address Details");
+        Assert.assertEquals(addressInvoice.get(0), "YOUR BILLING ADDRESS", "Verify Address Details");
 
         for (int i = 1; i < 8; i++) {
-            Assert.assertEquals(addressDelivery.get(i), addressInvoice.get(i), "14. Verify Address Details");
+            Assert.assertEquals(addressDelivery.get(i), addressInvoice.get(i), "Verify Address Details");
         }
 
         String no1 = "Mr. " + JSONReader.accountDetails("firstName") + " " + JSONReader.accountDetails("lastName");
@@ -106,13 +106,13 @@ public class TestCase14 extends TestBasic {
         String no6 = JSONReader.accountDetails("country");
         String no7 = JSONReader.accountDetails("mobileNumber");
 
-        Assert.assertEquals(addressDelivery.get(1), no1, "14. Verify Address Details");
-        Assert.assertEquals(addressDelivery.get(2), no2, "14. Verify Address Details");
-        Assert.assertEquals(addressDelivery.get(3), no3, "14. Verify Address Details");
-        Assert.assertEquals(addressDelivery.get(4), no4, "14. Verify Address Details");
-        Assert.assertEquals(addressDelivery.get(5), no5, "14. Verify Address Details");
-        Assert.assertEquals(addressDelivery.get(6), no6, "14. Verify Address Details");
-        Assert.assertEquals(addressDelivery.get(7), no7, "14. Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(1), no1, "Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(2), no2, "Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(3), no3, "Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(4), no4, "Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(5), no5, "Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(6), no6, "Verify Address Details");
+        Assert.assertEquals(addressDelivery.get(7), no7, "Verify Address Details");
 
         List<String> productNames = new CartPage(getDriver()).getProductsNames();
         List<String> prices = new CartPage(getDriver()).getPrices();
@@ -121,32 +121,22 @@ public class TestCase14 extends TestBasic {
         String totalAmount = new CheckoutPage(getDriver()).getTotalAmount().getText();
 
         for (int i = 0; i < 2; i++) {
-            Assert.assertEquals(totalPrices.get(i), prices.get(i), "14. Verify Review Your Order");
-            Assert.assertEquals(quantity.get(i), "1", "14. Verify Review Your Order");
+            Assert.assertEquals(totalPrices.get(i), prices.get(i), "Verify Review Your Order");
+            Assert.assertEquals(quantity.get(i), "1", "Verify Review Your Order");
         }
 
-        Assert.assertEquals(productNames.get(0), "Blue Top", "14. Verify Review Your Order");
-        Assert.assertEquals(productNames.get(1), "Men Tshirt", "14. Verify Review Your Order");
-        Assert.assertEquals(totalAmount, "Rs. 900", "14. Verify Review Your Order");
+        Assert.assertEquals(productNames.get(0), "Blue Top", "Verify Review Your Order");
+        Assert.assertEquals(productNames.get(1), "Men Tshirt", "Verify Review Your Order");
+        Assert.assertEquals(totalAmount, "Rs. 900", "Verify Review Your Order");
     }
 
-    @Step("18. Verify success message 'Congratulations! Your order has been confirmed!'")
-    private void verifySuccessMessageCongratulationsYourOrderHasBeenConfirmed() throws IOException, ParseException {
+    @Step("Verify success message 'Congratulations! Your order has been confirmed!'")
+    public static void verifySuccessMessageCongratulationsYourOrderHasBeenConfirmed() throws IOException, ParseException {
         String alertSuccessText = new CheckoutPage(getDriver())
                 .enterComment("Sed fringilla aliquet turpis, ut vestibulum orci vulputate sit amet.")
                 .fillPaymentDetails()
                 .getSuccessMessage()
                 .getText();
-        Assert.assertEquals(alertSuccessText, "Congratulations! Your order has been confirmed!", "18. Verify success message 'Congratulations! Your order has been confirmed!'");
-    }
-
-    @Step("20. Verify 'ACCOUNT DELETED!' and click 'Continue' button")
-    private void verifyAccountDeletedAndClickContinueButton() {
-        String accountDeletedText = new LoggedHomePage(getDriver())
-                .deleteAccountButtonClick()
-                .getAccountDeleted()
-                .getText();
-        Assert.assertEquals(accountDeletedText, "ACCOUNT DELETED!", "20. Verify 'ACCOUNT DELETED!'");
-        new AccountDeletedPage(getDriver()).continueButtonClick();
+        Assert.assertEquals(alertSuccessText, "Congratulations! Your order has been confirmed!", "Verify success message 'Congratulations! Your order has been confirmed!'");
     }
 }

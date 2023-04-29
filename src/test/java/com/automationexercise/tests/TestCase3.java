@@ -1,14 +1,10 @@
 package com.automationexercise.tests;
 
 import com.automationexercise.pages.LoginSignupPage;
-import com.automationexercise.utils.JSONReader;
 import com.automationexercise.utils.Util;
 import io.qameta.allure.*;
-import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 @Epic("Regression Tests")
 @Feature("Login User")
