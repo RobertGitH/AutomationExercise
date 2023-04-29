@@ -1,5 +1,6 @@
 package com.automationexercise.pages;
 
+import com.automationexercise.utils.SeleniumHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,7 @@ public class TestCasesPage {
     }
 
     public WebElement getTestCases() {
+        SeleniumHelper.waitForElementToBeVisible(driver, testCases);
         return testCases;
     }
 }

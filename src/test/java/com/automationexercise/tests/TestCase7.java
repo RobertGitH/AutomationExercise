@@ -23,12 +23,12 @@ public class TestCase7 extends TestBasic {
         verifyUserIsNavigatedToTestCasesPageSuccessfully();
     }
 
-    @Step("5. Verify user is navigated to test cases page successfully")
+    @Step("Verify user is navigated to test cases page successfully")
     private void verifyUserIsNavigatedToTestCasesPageSuccessfully() {
         String testCasesText = new HomePage(getDriver())
                 .testCasesButtonClick()
                 .getTestCases()
                 .getText();
-        Assert.assertEquals(testCasesText, "TEST CASES", "5. Verify user is navigated to test cases page successfully");
+        Assert.assertEquals(testCasesText, "TEST CASES", "Verify user is navigated to test cases page successfully");
     }
 }

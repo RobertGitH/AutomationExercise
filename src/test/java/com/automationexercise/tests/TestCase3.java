@@ -28,7 +28,7 @@ public class TestCase3 extends TestBasic {
         verifyErrorYourEmailOrPasswordIsIncorrectIsVisible();
     }
 
-    @Step("8. Verify error 'Your email or password is incorrect!' is visible")
+    @Step("Verify error 'Your email or password is incorrect!' is visible")
     private void verifyErrorYourEmailOrPasswordIsIncorrectIsVisible() {
         String email = "email" + Util.generateCurrentDateAndTime() + "@incorrect.pl";
         String password = "pass" + Util.generateCurrentDateAndTime();
@@ -37,6 +37,6 @@ public class TestCase3 extends TestBasic {
                 .fillIncorrectLogin(email, password)
                 .getErrorLogin()
                 .getText();
-        Assert.assertEquals(errorLoginText, "Your email or password is incorrect!", "8. Verify error 'Your email or password is incorrect!' is visible");
+        Assert.assertEquals(errorLoginText, "Your email or password is incorrect!", "Verify error 'Your email or password is incorrect!' is visible");
     }
 }

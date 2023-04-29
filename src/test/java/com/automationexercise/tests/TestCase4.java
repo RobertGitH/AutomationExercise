@@ -31,12 +31,12 @@ public class TestCase4 extends TestBasic {
         verifyThatUserIsNavigatedToLoginPage();
     }
 
-    @Step("10. Verify that user is navigated to login page")
+    @Step("Verify that user is navigated to login page")
     private void verifyThatUserIsNavigatedToLoginPage() {
         String loginToYourAccountText = new LoggedHomePage(getDriver())
                 .logoutButtonClick()
                 .getLoginToYourAccount()
                 .getText();
-        Assert.assertEquals(loginToYourAccountText, "Login to your account", "10. Verify that user is navigated to login page");
+        Assert.assertEquals(loginToYourAccountText, "Login to your account", "Verify that user is navigated to login page");
     }
 }

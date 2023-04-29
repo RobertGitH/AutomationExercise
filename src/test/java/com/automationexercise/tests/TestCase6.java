@@ -32,16 +32,16 @@ public class TestCase6 extends TestBasic {
         clickHomeButtonAndVerifyThatLandedToHomePageSuccessfully();
     }
 
-    @Step("5. Verify 'GET IN TOUCH' is visible")
+    @Step("Verify 'GET IN TOUCH' is visible")
     private void verifyGetInTouchIsVisible() {
         String getGetInTouchText = new HomePage(getDriver())
                 .contactUsButtonClick()
                 .getGetInTouch()
                 .getText();
-        Assert.assertEquals(getGetInTouchText, "GET IN TOUCH", "5. Verify 'GET IN TOUCH' is visible");
+        Assert.assertEquals(getGetInTouchText, "GET IN TOUCH", "Verify 'GET IN TOUCH' is visible");
     }
 
-    @Step("10. Verify success message 'Success! Your details have been submitted successfully.' is visible")
+    @Step("Verify success message 'Success! Your details have been submitted successfully.' is visible")
     private void verifySuccessMessageSuccessYourDetailsHaveBeenSubmittedSuccessfullyIsVisible() {
         String alertSuccessText = new ContactUsPage(getDriver())
                 .fillForm()
@@ -49,15 +49,15 @@ public class TestCase6 extends TestBasic {
                 .okButtonClick()
                 .getAlertSuccess()
                 .getText();
-        Assert.assertEquals(alertSuccessText, "Success! Your details have been submitted successfully.", "10. Verify success message 'Success! Your details have been submitted successfully.' is visible");
+        Assert.assertEquals(alertSuccessText, "Success! Your details have been submitted successfully.", "Verify success message 'Success! Your details have been submitted successfully.' is visible");
     }
 
-    @Step("11. Click 'Home' button and verify that landed to home page successfully")
+    @Step("Click 'Home' button and verify that landed to home page successfully")
     private void clickHomeButtonAndVerifyThatLandedToHomePageSuccessfully() {
         boolean homePageVisible = new ContactUsPage(getDriver())
                 .homePageButtonClick()
                 .homePageIsVisible()
                 .isDisplayed();
-        Assert.assertTrue(homePageVisible, "11. Click 'Home' button and verify that landed to home page successfully");
+        Assert.assertTrue(homePageVisible, "Click 'Home' button and verify that landed to home page successfully");
     }
 }

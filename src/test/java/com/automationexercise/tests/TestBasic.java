@@ -19,16 +19,14 @@ public class TestBasic {
     @BeforeMethod
     public void setup() throws IOException {
         String url = PropertiesLoader.loadProperty("url");
-
         WebDriver driver = BrowserManager.doBrowserSetup();
         tdriver.set(driver);
         getDriver().get(url);
-        //getDriver().manage().window().maximize();
     }
 
     @AfterMethod
     public void tearDown() {
-        //getDriver().quit();
+        getDriver().quit();
         tdriver.remove();
     }
 }

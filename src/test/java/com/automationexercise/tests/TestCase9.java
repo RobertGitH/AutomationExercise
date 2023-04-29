@@ -37,16 +37,16 @@ public class TestCase9 extends TestBasic {
         verifyAllTheProductsRelatedToSearchAreVisible();
     }
 
-    @Step("7. Verify 'SEARCHED PRODUCTS' is visible")
+    @Step("Verify 'SEARCHED PRODUCTS' is visible")
     private void verifySearchedProductsIsVisible() {
         String searchedProductsText = new ProductsPage(getDriver())
                 .fillSearchProductInput(search)
                 .getTitleTextCenter()
                 .getText();
-        Assert.assertEquals(searchedProductsText, "SEARCHED PRODUCTS", "7. Verify 'SEARCHED PRODUCTS' is visible");
+        Assert.assertEquals(searchedProductsText, "SEARCHED PRODUCTS", "Verify 'SEARCHED PRODUCTS' is visible");
     }
 
-    @Step("8. Verify all the products related to search are visible")
+    @Step("Verify all the products related to search are visible")
     private void verifyAllTheProductsRelatedToSearchAreVisible() {
         List<String> productsNames = new ProductsPage(getDriver()).getProductsSearchNames();
         int productsNamesSize = productsNames.size();

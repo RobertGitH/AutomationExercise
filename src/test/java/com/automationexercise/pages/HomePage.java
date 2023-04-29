@@ -2,6 +2,7 @@ package com.automationexercise.pages;
 
 import com.automationexercise.tests.TestBasic;
 import com.automationexercise.utils.JSONReader;
+import com.automationexercise.utils.SeleniumHelper;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -82,6 +83,7 @@ public class HomePage extends TestBasic {
     }
 
     public ProductDetailPage viewProduct1ButtonClick() {
+        SeleniumHelper.waitForElementToBeClickable(driver, viewProduct1Button);
         viewProduct1Button.click();
         return new ProductDetailPage(driver);
     }
@@ -93,6 +95,7 @@ public class HomePage extends TestBasic {
 
     public HomePage fillSubscribe() throws IOException, ParseException {
         subscribeEmailInput.sendKeys(JSONReader.existingUser("email"));
+        SeleniumHelper.waitForElementToBeClickable(driver, subscribeButton);
         subscribeButton.click();
         return this;
     }

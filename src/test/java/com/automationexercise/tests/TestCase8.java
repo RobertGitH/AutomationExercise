@@ -31,16 +31,16 @@ public class TestCase8 extends TestBasic {
         verifyThatDetailDetailIsVisible();
     }
 
-    @Step("5. Verify user is navigated to ALL PRODUCTS page successfully")
+    @Step("Verify user is navigated to ALL PRODUCTS page successfully")
     public static void verifyUserIsNavigatedToAllProductsPageSuccessfully() {
         String allProductsText = new HomePage(getDriver())
                 .productsButtonClick()
                 .getTitleTextCenter()
                 .getText();
-        Assert.assertEquals(allProductsText, "ALL PRODUCTS", "5. Verify user is navigated to ALL PRODUCTS page successfully");
+        Assert.assertEquals(allProductsText, "ALL PRODUCTS", "Verify user is navigated to ALL PRODUCTS page successfully");
     }
 
-    @Step("9. Verify that detail detail is visible: product name, category, price, availability, condition, brand")
+    @Step("Verify that detail detail is visible: product name, category, price, availability, condition, brand")
     private void verifyThatDetailDetailIsVisible() {
         boolean name = new ProductDetailPage(getDriver()).getProductName().isDisplayed();
         boolean category = new ProductDetailPage(getDriver()).getProductCategory().isDisplayed();
@@ -49,11 +49,11 @@ public class TestCase8 extends TestBasic {
         boolean condition = new ProductDetailPage(getDriver()).getProductCondition().isDisplayed();
         boolean brand = new ProductDetailPage(getDriver()).getProductBrand().isDisplayed();
 
-        Assert.assertTrue(name, "9. Verify that detail detail is visible: name");
-        Assert.assertTrue(category, "9. Verify that detail detail is visible: category");
-        Assert.assertTrue(price, "9. Verify that detail detail is visible: price");
-        Assert.assertTrue(availability, "9. Verify that detail detail is visible: availability");
-        Assert.assertTrue(condition, "9. Verify that detail detail is visible: condition");
-        Assert.assertTrue(brand, "9. Verify that detail detail is visible: brand");
+        Assert.assertTrue(name, "Verify that detail detail is visible: name");
+        Assert.assertTrue(category, "Verify that detail detail is visible: category");
+        Assert.assertTrue(price, "Verify that detail detail is visible: price");
+        Assert.assertTrue(availability, "Verify that detail detail is visible: availability");
+        Assert.assertTrue(condition, "Verify that detail detail is visible: condition");
+        Assert.assertTrue(brand, "Verify that detail detail is visible: brand");
     }
 }

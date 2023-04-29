@@ -32,21 +32,21 @@ public class TestCase2 extends TestBasic {
         verifyThatLoggedInAsUsernameIsVisible();
     }
 
-    @Step("5. Verify 'Login to your account' is visible")
+    @Step("Verify 'Login to your account' is visible")
     public static void verifyLoginToYourAccountIsVisible() {
         String loginToYourAccountText = new HomePage(getDriver())
                 .signupLoginClick()
                 .getLoginToYourAccount()
                 .getText();
-        Assert.assertEquals(loginToYourAccountText, "Login to your account", "5. Verify 'Login to your account' is visible");
+        Assert.assertEquals(loginToYourAccountText, "Login to your account", "Verify 'Login to your account' is visible");
     }
 
-    @Step("8. Verify that 'Logged in as username' is visible")
+    @Step("Verify that 'Logged in as username' is visible")
     private static void verifyThatLoggedInAsUsernameIsVisible() throws IOException, ParseException {
         String username = new LoginSignupPage(getDriver())
                 .fillCorrectLogin(JSONReader.existingUser("email"), JSONReader.existingUser("password"))
                 .getUsername()
                 .getText();
-        Assert.assertEquals(username, JSONReader.existingUser("name"), "8. Verify that 'Logged in as username' is visible");
+        Assert.assertEquals(username, JSONReader.existingUser("name"), "Verify that 'Logged in as username' is visible");
     }
 }

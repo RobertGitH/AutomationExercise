@@ -29,20 +29,20 @@ public class TestCase10 extends TestBasic {
         verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible();
     }
 
-    @Step("5. Verify text 'SUBSCRIPTION")
+    @Step("Verify text 'SUBSCRIPTION")
     public static void verifyTextSubscription() {
         String subscriptionText = new HomePage(getDriver())
                 .getSubscription()
                 .getText();
-        Assert.assertEquals(subscriptionText, "SUBSCRIPTION", "5. Verify text 'SUBSCRIPTION'");
+        Assert.assertEquals(subscriptionText, "SUBSCRIPTION", "Verify text 'SUBSCRIPTION'");
     }
 
-    @Step("7. Verify success message 'You have been successfully subscribed!' is visible")
+    @Step("Verify success message 'You have been successfully subscribed!' is visible")
     public static void verifySuccessMessageYouHaveBeenSuccessfullySubscribedIsVisible() throws IOException, ParseException {
         String messageAlert = new HomePage(getDriver())
                 .fillSubscribe()
                 .getAlertSuccessSubscribe()
                 .getText();
-        Assert.assertEquals(messageAlert, "You have been successfully subscribed!", "7. Verify success message 'You have been successfully subscribed!' is visible");
+        Assert.assertEquals(messageAlert, "You have been successfully subscribed!", "Verify success message 'You have been successfully subscribed!' is visible");
     }
 }

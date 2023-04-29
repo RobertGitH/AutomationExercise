@@ -30,12 +30,12 @@ public class TestCase5 extends TestBasic {
         verifyErrorEmailAddressAlreadyExistIsVisible();
     }
 
-    @Step("8. Verify error 'Email Address already exist!' is visible")
+    @Step("Verify error 'Email Address already exist!' is visible")
     private void verifyErrorEmailAddressAlreadyExistIsVisible() throws IOException, ParseException {
         String emailAddressAlreadyExistText = new LoginSignupPage(getDriver())
                 .fillIncorrectSignup()
                 .getEmailAddressAlreadyExist()
                 .getText();
-        Assert.assertEquals(emailAddressAlreadyExistText, "Email Address already exist!", "8. Verify error 'Email Address already exist!' is visible");
+        Assert.assertEquals(emailAddressAlreadyExistText, "Email Address already exist!", "Verify error 'Email Address already exist!' is visible");
     }
 }

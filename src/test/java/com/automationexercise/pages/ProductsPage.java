@@ -68,9 +68,11 @@ public class ProductsPage {
     }
 
     public CartPage addProductsToCart() {
+        SeleniumHelper.waitForElementToBeClickable(driver, addToCartButton1);
         addToCartButton1.click();
         SeleniumHelper.waitForElementToBeClickable(driver, continueShoppingButton);
         continueShoppingButton.click();
+        SeleniumHelper.waitForElementToBeClickable(driver, addToCartButton2);
         addToCartButton2.click();
         SeleniumHelper.waitForElementToBeClickable(driver, viewCartButton);
         viewCartButton.click();

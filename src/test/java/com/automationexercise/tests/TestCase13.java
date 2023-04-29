@@ -31,17 +31,17 @@ public class TestCase13 extends TestBasic {
         verifyThatProductIsDisplayedInCartPageWithExactQuantity();
     }
 
-    @Step("5. Verify product detail is opened")
+    @Step("Verify product detail is opened")
     private void verifyProductDetailIsOpened() {
         new HomePage(getDriver()).viewProduct1ButtonClick();
-        Assert.assertEquals(getDriver().getTitle(), "Automation Exercise - Product Details", "5. Verify product detail is opened");
+        Assert.assertEquals(getDriver().getTitle(), "Automation Exercise - Product Details", "Verify product detail is opened");
     }
 
-    @Step("9. Verify that product is displayed in cart page with exact quantity")
+    @Step("Verify that product is displayed in cart page with exact quantity")
     private void verifyThatProductIsDisplayedInCartPageWithExactQuantity() {
         List<String> quantity = new ProductDetailPage(getDriver()).increaseQuantity("4")
                 .addToCartButtonClick()
                 .viewCartButtonClick().getQuantity();
-        Assert.assertEquals(quantity.get(0), "4", "9. Verify that product is displayed in cart page with exact quantity");
+        Assert.assertEquals(quantity.get(0), "4", "Verify that product is displayed in cart page with exact quantity");
     }
 }
