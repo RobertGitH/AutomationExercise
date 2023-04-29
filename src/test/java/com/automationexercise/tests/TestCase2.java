@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 @Epic("Regression Tests")
-@Feature("Login User")
+@Feature("User")
 public class TestCase2 extends TestBasic {
 
     @Test(description = "Test Case 2: Login User with correct email and password")

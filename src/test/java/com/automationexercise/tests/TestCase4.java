@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 @Epic("Regression Tests")
-@Feature("Logout User")
+@Feature("User")
 public class TestCase4 extends TestBasic {
 
     @Test(description = "Test Case 4: Logout User")

@@ -26,7 +26,7 @@ public class BrowserManager {
 
         } else if (name.equalsIgnoreCase("Firefox")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-            firefoxOptions.addArguments("--headless");
+            //firefoxOptions.addArguments("--headless");
             firefoxOptions.addArguments("--private");
             driver = new FirefoxDriver(firefoxOptions);
         }

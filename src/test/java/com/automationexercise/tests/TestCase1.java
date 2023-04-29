@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 @Epic("Regression Tests")
-@Feature("Register User")
+@Feature("User")
 public class TestCase1 extends TestBasic {
 
     String name = "name" + Util.generateCurrentDateAndTime();
@@ -18,7 +18,7 @@ public class TestCase1 extends TestBasic {
 
     @Test(description = "Test Case 1: Register User")
     @Severity(SeverityLevel.CRITICAL)
-    @Story("Create and delete account")
+    @Story("Register User")
     @Description("""
             1. Launch browser
             2. Navigate to url 'http://automationexercise.com'

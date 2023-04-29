@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @Epic("Regression Tests")
-@Feature("Login User")
+@Feature("User")
 public class TestCase3 extends TestBasic {
 
     @Test(description = "Test Case 3: Login User with incorrect email and password")
