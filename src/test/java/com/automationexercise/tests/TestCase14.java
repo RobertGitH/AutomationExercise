@@ -61,7 +61,7 @@ public class TestCase14 extends TestBasic {
         Assert.assertEquals(shoppingCartText, "Shopping Cart", "Verify that cart page is displayed");
     }
 
-    @Step("10. Verify 'ACCOUNT CREATED!' and click 'Continue' button")
+    @Step("Verify 'ACCOUNT CREATED!' and click 'Continue' button")
     private void verifyAccountCreatedAndClickContinueButton() throws IOException, ParseException {
         String accountCreatedText = new CartPage(getDriver())
                 .proceedToCheckoutButtonClick()
@@ -71,16 +71,16 @@ public class TestCase14 extends TestBasic {
                 .getAccountCreated()
                 .getText();
 
-        Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "10. Verify 'ACCOUNT CREATED!'");
+        Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "Verify 'ACCOUNT CREATED!'");
         new AccountCreatedPage(getDriver()).continueButtonClick();
     }
 
-    @Step("11. Verify ' Logged in as username' at top")
+    @Step("Verify ' Logged in as username' at top")
     private void verifyLoggedInAsUsernameAtTop() {
         String username = new LoggedHomePage(getDriver())
                 .getUsername()
                 .getText();
-        Assert.assertEquals(username, name, "11. Verify ' Logged in as username' at top");
+        Assert.assertEquals(username, name, "Verify ' Logged in as username' at top");
     }
 
     @Step("Verify Address Details and Review Your Order")

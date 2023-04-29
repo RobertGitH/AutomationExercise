@@ -40,7 +40,7 @@ public class TestCase15 extends TestBasic {
             15. Click 'Pay and Confirm Order' button
             16. Verify success message 'Congratulations! Your order has been confirmed!'
             17. Click 'Delete Account' button
-            18. Verify 'ACCOUNT DELETED!' and click 'Continue' button""")
+            18. Verify that 'ACCOUNT DELETED!' and click 'Continue' button""")
     public void placeOrderRegisterBeforeCheckout() throws IOException, ParseException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         verifyAccountCreatedAndClickContinueButton();
@@ -52,7 +52,7 @@ public class TestCase15 extends TestBasic {
         TestCase1.verifyThatAccountDeletedIsVisibleAndClickContinueButton();
     }
 
-    @Step("6. Verify 'ACCOUNT CREATED!' and click 'Continue' button")
+    @Step("Verify 'ACCOUNT CREATED!' and click 'Continue' button")
     private void verifyAccountCreatedAndClickContinueButton() throws IOException, ParseException {
         String accountCreatedText = new HomePage(getDriver())
                 .signupLoginClick()
@@ -60,15 +60,15 @@ public class TestCase15 extends TestBasic {
                 .fillAccountDetails()
                 .getAccountCreated()
                 .getText();
-        Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "6. Verify 'ACCOUNT CREATED!'");
+        Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "Verify 'ACCOUNT CREATED!'");
         new AccountCreatedPage(getDriver()).continueButtonClick();
     }
 
-    @Step("7. Verify ' Logged in as username' at top")
+    @Step("Verify ' Logged in as username' at top")
     private void verifyLoggedInAsUsernameAtTop() {
         String username = new LoggedHomePage(getDriver())
                 .getUsername()
                 .getText();
-        Assert.assertEquals(username, name, "7. Verify ' Logged in as username' at top");
+        Assert.assertEquals(username, name, "Verify ' Logged in as username' at top");
     }
 }

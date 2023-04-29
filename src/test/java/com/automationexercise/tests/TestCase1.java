@@ -24,7 +24,7 @@ public class TestCase1 extends TestBasic {
             2. Navigate to url 'http://automationexercise.com'
             3. Verify that home page is visible successfully
             4. Click on 'Signup / Login' button
-            5. Verify 'New User Signup!' is visible
+            5. Verify 'New User Signup!' is visible]
             6. Enter name and email address
             7. Click 'Signup' button
             8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
@@ -35,7 +35,7 @@ public class TestCase1 extends TestBasic {
             13. Click 'Create Account button'
             14. Verify that 'ACCOUNT CREATED!' is visible
             15. Click 'Continue' button
-            16. Verify that 'Logged in as username' is visible
+            16. Verify that 'Logged in as username' is visible]
             17. Click 'Delete Account' button
             18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button""")
     public void registerUser() throws IOException, ParseException {
@@ -47,48 +47,48 @@ public class TestCase1 extends TestBasic {
         verifyThatAccountDeletedIsVisibleAndClickContinueButton();
     }
 
-    @Step("3. Verify that home page is visible successfully")
+    @Step("Verify that home page is visible successfully")
     public static void verifyThatHomePageIsVisibleSuccessfully() {
         boolean homePageVisible = new HomePage(getDriver())
                 .homePageIsVisible()
                 .isDisplayed();
-        Assert.assertTrue(homePageVisible, "3. Verify that home page is visible successfully");
+        Assert.assertTrue(homePageVisible, "Verify that home page is visible successfully");
     }
 
-    @Step("5. Verify 'New User Signup!' is visible")
+    @Step("Verify 'New User Signup!' is visible")
     public static void verifyNewUserSignupIsVisible() {
         String newUserSignupText = new HomePage(getDriver())
                 .signupLoginClick()
                 .getNewUserSignup()
                 .getText();
-        Assert.assertEquals(newUserSignupText, "New User Signup!", "5. Verify 'New User Signup!' is visible");
+        Assert.assertEquals(newUserSignupText, "New User Signup!", "Verify 'New User Signup!' is visible");
     }
 
-    @Step("8. Verify that 'ENTER ACCOUNT INFORMATION' is visible")
+    @Step("Verify that 'ENTER ACCOUNT INFORMATION' is visible")
     private void verifyThatEnterAccountInformationIsVisible() {
         String enterAccountInformationText = new LoginSignupPage(getDriver())
                 .fillCorrectSignup(name, email)
                 .getEnterAccountInformation()
                 .getText();
-        Assert.assertEquals(enterAccountInformationText, "ENTER ACCOUNT INFORMATION", "8. Verify that 'ENTER ACCOUNT INFORMATION' is visible");
+        Assert.assertEquals(enterAccountInformationText, "ENTER ACCOUNT INFORMATION", "Verify that 'ENTER ACCOUNT INFORMATION' is visible");
     }
 
-    @Step("14. Verify that 'ACCOUNT CREATED!' is visible")
+    @Step("Verify that 'ACCOUNT CREATED!' is visible")
     private void verifyThatAccountCreatedIsVisible() throws IOException, ParseException {
         String accountCreatedText = new EnterAccountInformationPage(getDriver())
                 .fillAccountDetails()
                 .getAccountCreated()
                 .getText();
-        Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "14. Verify that 'ACCOUNT CREATED!' is visible");
+        Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "Verify that 'ACCOUNT CREATED!' is visible");
     }
 
-    @Step("16. Verify that 'Logged in as username' is visible")
+    @Step("Verify that 'Logged in as username' is visible")
     private void verifyThatLoggedInAsUsernameIsVisible() {
         String username = new AccountCreatedPage(getDriver())
                 .continueButtonClick()
                 .getUsername()
                 .getText();
-        Assert.assertEquals(username, name, "16. Verify that 'Logged in as username' is visible");
+        Assert.assertEquals(username, name, "Verify that 'Logged in as username' is visible");
     }
 
     @Step("Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button")
