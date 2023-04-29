@@ -26,7 +26,7 @@ public class CheckoutPage {
 
     private WebDriver driver;
 
-    public CheckoutPage(WebDriver driver){
+    public CheckoutPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }

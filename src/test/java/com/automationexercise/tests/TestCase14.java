@@ -39,7 +39,7 @@ public class TestCase14 extends TestBasic {
             15. Enter description in comment text area and click 'Place Order'
             16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
             17. Click 'Pay and Confirm Order' button
-            18. Verify success message 'Your order has been placed successfully!'
+            18. Verify success message 'Congratulations! Your order has been confirmed!'
             19. Click 'Delete Account' button
             20. Verify 'ACCOUNT DELETED!' and click 'Continue' button""")
     public void placeOrderRegisterWhileCheckout() throws IOException, ParseException {
@@ -48,7 +48,8 @@ public class TestCase14 extends TestBasic {
         verifyAccountCreatedAndClickContinueButton();
         verifyLoggedInAsUsernameAtTop();
         verifyAddressDetailsAndReviewYourOrder();
-        new CheckoutPage(getDriver()).enterComment("Sed fringilla aliquet turpis, ut vestibulum orci vulputate sit amet.");
+        verifySuccessMessageCongratulationsYourOrderHasBeenConfirmed();
+        verifyAccountDeletedAndClickContinueButton();
     }
 
     @Step("6. Verify that cart page is displayed")
@@ -90,9 +91,11 @@ public class TestCase14 extends TestBasic {
                 .getAddressDelivery();
         List<String> addressInvoice = new CheckoutPage(getDriver()).getAddressInvoice();
 
+        Assert.assertEquals(addressDelivery.get(0), "YOUR DELIVERY ADDRESS", "14. Verify Address Details");
+        Assert.assertEquals(addressInvoice.get(0), "YOUR BILLING ADDRESS", "14. Verify Address Details");
+
         for (int i = 1; i < 8; i++) {
             Assert.assertEquals(addressDelivery.get(i), addressInvoice.get(i), "14. Verify Address Details");
-            System.out.println(addressDelivery.get(i) + " = " + addressInvoice.get(i));
         }
 
         String no1 = "Mr. " + JSONReader.accountDetails("firstName") + " " + JSONReader.accountDetails("lastName");
@@ -125,5 +128,25 @@ public class TestCase14 extends TestBasic {
         Assert.assertEquals(productNames.get(0), "Blue Top", "14. Verify Review Your Order");
         Assert.assertEquals(productNames.get(1), "Men Tshirt", "14. Verify Review Your Order");
         Assert.assertEquals(totalAmount, "Rs. 900", "14. Verify Review Your Order");
+    }
+
+    @Step("18. Verify success message 'Congratulations! Your order has been confirmed!'")
+    private void verifySuccessMessageCongratulationsYourOrderHasBeenConfirmed() throws IOException, ParseException {
+        String alertSuccessText = new CheckoutPage(getDriver())
+                .enterComment("Sed fringilla aliquet turpis, ut vestibulum orci vulputate sit amet.")
+                .fillPaymentDetails()
+                .getSuccessMessage()
+                .getText();
+        Assert.assertEquals(alertSuccessText, "Congratulations! Your order has been confirmed!", "18. Verify success message 'Congratulations! Your order has been confirmed!'");
+    }
+
+    @Step("20. Verify 'ACCOUNT DELETED!' and click 'Continue' button")
+    private void verifyAccountDeletedAndClickContinueButton() {
+        String accountDeletedText = new LoggedHomePage(getDriver())
+                .deleteAccountButtonClick()
+                .getAccountDeleted()
+                .getText();
+        Assert.assertEquals(accountDeletedText, "ACCOUNT DELETED!", "20. Verify 'ACCOUNT DELETED!'");
+        new AccountDeletedPage(getDriver()).continueButtonClick();
     }
 }
