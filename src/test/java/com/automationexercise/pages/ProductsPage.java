@@ -38,6 +38,12 @@ public class ProductsPage {
     @FindBy(css = "a[href='/view_cart'] u")
     private WebElement viewCartButton;
 
+    @FindBy(css = "a[href='#Men']")
+    private WebElement menCategory;
+
+    @FindBy(css = "a[href='/category_products/3']")
+    private WebElement tShirtsCategory;
+
     private WebDriver driver;
 
     public ProductsPage(WebDriver driver) {
@@ -77,6 +83,16 @@ public class ProductsPage {
         SeleniumHelper.waitForElementToBeClickable(driver, viewCartButton);
         viewCartButton.click();
         return new CartPage(driver);
+    }
+
+    public ProductsPage menCategoryClick() {
+        menCategory.click();
+        return this;
+    }
+
+    public ProductsPage tShirtsCategoryClick() {
+        tShirtsCategory.click();
+        return this;
     }
 }
 

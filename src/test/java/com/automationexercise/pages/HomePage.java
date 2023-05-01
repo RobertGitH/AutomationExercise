@@ -33,6 +33,15 @@ public class HomePage extends TestBasic {
     @FindBy(css = "a[href='/product_details/1']")
     private WebElement viewProduct1Button;
 
+    @FindBy(id = "accordian")
+    private WebElement categories;
+
+    @FindBy(xpath = "//*[@id='accordian']/div[1]/div[1]/h4/a/span/i")
+    private WebElement womenCategory;
+
+    @FindBy(css = "a[href='/category_products/1']")
+    private WebElement dressCategory;
+
     //footer
     @FindBy(css = "div[class='single-widget'] h2")
     private WebElement subscription;
@@ -104,6 +113,21 @@ public class HomePage extends TestBasic {
         return alertSuccessSubscribe;
     }
 
+    public WebElement getCategories() {
+        return categories;
+    }
+
+    public HomePage womenCategoryClick() {
+        SeleniumHelper.waitForElementToBeClickable(driver, womenCategory);
+        womenCategory.click();
+        return this;
+    }
+
+    public ProductsPage dressCategoryClick() {
+        SeleniumHelper.waitForElementToBeClickable(driver, dressCategory);
+        dressCategory.click();
+        return new ProductsPage(driver);
+    }
 }
 
 
