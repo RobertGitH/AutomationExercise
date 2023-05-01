@@ -10,12 +10,17 @@ import java.io.IOException;
 import java.util.List;
 
 @Epic("Regression Tests")
-@Feature("Search Product")
+@Feature("Search")
 public class TestCase9 extends TestBasic {
 
-    String search = PropertiesLoader.loadProperty("search.product.input");
+    static String search;
 
-    public TestCase9() throws IOException {
+    static {
+        try {
+            search = PropertiesLoader.loadProperty("search.product.input");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test(description = "Test Case 9: Search Product")
@@ -38,7 +43,7 @@ public class TestCase9 extends TestBasic {
     }
 
     @Step("Verify 'SEARCHED PRODUCTS' is visible")
-    private void verifySearchedProductsIsVisible() {
+    public static void verifySearchedProductsIsVisible() {
         String searchedProductsText = new ProductsPage(getDriver())
                 .fillSearchProductInput(search)
                 .getTitleTextCenter()
@@ -47,13 +52,13 @@ public class TestCase9 extends TestBasic {
     }
 
     @Step("Verify all the products related to search are visible")
-    private void verifyAllTheProductsRelatedToSearchAreVisible() {
+    public static List<String> verifyAllTheProductsRelatedToSearchAreVisible() {
         List<String> productsNames = new ProductsPage(getDriver()).getProductsSearchNames();
-        int productsNamesSize = productsNames.size();
 
-        for (int i = 0; i < productsNamesSize; i++) {
+        for (int i = 0; i < productsNames.size(); i++) {
             Assert.assertTrue(productsNames.get(i).toLowerCase().contains(search.toLowerCase()));
             System.out.println(i + ". " + productsNames.get(i) + " - contain: " + search);
         }
+        return productsNames;
     }
 }

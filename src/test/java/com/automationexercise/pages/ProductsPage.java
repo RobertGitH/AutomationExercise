@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.aspectj.runtime.internal.Conversions.intValue;
+
 public class ProductsPage {
 
     @FindBy(css = ".title.text-center")
@@ -52,6 +54,9 @@ public class ProductsPage {
 
     @FindBy(css = "a[href='/brand_products/Madame']")
     private WebElement madameBrand;
+
+    @FindBy(css = "a[class='btn btn-default add-to-cart']")
+    List<WebElement> addButtons;
 
     private WebDriver driver;
 
@@ -115,6 +120,16 @@ public class ProductsPage {
 
     public ProductsPage madameBrandClick() {
         madameBrand.click();
+        return this;
+    }
+
+    public ProductsPage addAllProducts() {
+        for (int i = 0; i < addButtons.size(); i = i + 2) {
+            SeleniumHelper.waitForElementToBeClickable(driver, addButtons.get(i));
+            addButtons.get(i).click();
+            SeleniumHelper.waitForElementToBeClickable(driver, continueShoppingButton);
+            continueShoppingButton.click();
+        }
         return this;
     }
 }
