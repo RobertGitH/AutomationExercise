@@ -32,4 +32,20 @@ public class JSONReader {
         JSONObject paymentDetails = (JSONObject) obj;
         return (String)paymentDetails.get(data);
     }
+
+    public static String poloBrandProducts(String data) throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader fileReader = new FileReader("src\\test\\resources\\testData\\PoloBrandProducts.json");
+        Object obj = jsonParser.parse(fileReader);
+        JSONObject poloBrandProducts = (JSONObject) obj;
+        return (String)poloBrandProducts.get(data);
+    }
+
+    public static String madameBrandProducts(String data) throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader fileReader = new FileReader("src\\test\\resources\\testData\\MadameBrandProducts.json");
+        Object obj = jsonParser.parse(fileReader);
+        JSONObject madameBrandProducts = (JSONObject) obj;
+        return (String)madameBrandProducts.get(data);
+    }
 }

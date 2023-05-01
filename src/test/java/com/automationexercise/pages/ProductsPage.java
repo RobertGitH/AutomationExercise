@@ -44,6 +44,15 @@ public class ProductsPage {
     @FindBy(css = "a[href='/category_products/3']")
     private WebElement tShirtsCategory;
 
+    @FindBy(css = "div[class='brands-name']")
+    private WebElement brands;
+
+    @FindBy(css = "a[href='/brand_products/Polo']")
+    private WebElement poloBrand;
+
+    @FindBy(css = "a[href='/brand_products/Madame']")
+    private WebElement madameBrand;
+
     private WebDriver driver;
 
     public ProductsPage(WebDriver driver) {
@@ -92,6 +101,20 @@ public class ProductsPage {
 
     public ProductsPage tShirtsCategoryClick() {
         tShirtsCategory.click();
+        return this;
+    }
+
+    public WebElement getBrands() {
+        return brands;
+    }
+
+    public ProductsPage poloBrandClick() {
+        poloBrand.click();
+        return this;
+    }
+
+    public ProductsPage madameBrandClick() {
+        madameBrand.click();
         return this;
     }
 }
