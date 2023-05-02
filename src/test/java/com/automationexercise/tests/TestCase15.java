@@ -1,13 +1,9 @@
 package com.automationexercise.tests;
 
-import com.automationexercise.pages.AccountCreatedPage;
 import com.automationexercise.pages.CartPage;
-import com.automationexercise.pages.HomePage;
-import com.automationexercise.pages.LoggedHomePage;
 import com.automationexercise.utils.Util;
 import io.qameta.allure.*;
 import org.json.simple.parser.ParseException;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -43,32 +39,12 @@ public class TestCase15 extends TestBasic {
             18. Verify that 'ACCOUNT DELETED!' and click 'Continue' button""")
     public void placeOrderRegisterBeforeCheckout() throws IOException, ParseException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
-        verifyAccountCreatedAndClickContinueButton(name, email);
-        verifyLoggedInAsUsernameAtTop(name);
+        TestCase14.verifyAccountCreatedAndClickContinueButton(name, email);
+        TestCase14.verifyLoggedInAsUsernameAtTop(name);
         TestCase14.verifyThatCartPageIsDisplayed();
         new CartPage(getDriver()).proceedToCheckoutButtonClick();
         TestCase14.verifyAddressDetailsAndReviewYourOrder();
         TestCase14.verifySuccessMessageCongratulationsYourOrderHasBeenConfirmed();
         TestCase1.verifyThatAccountDeletedIsVisibleAndClickContinueButton();
-    }
-
-    @Step("Verify 'ACCOUNT CREATED!' and click 'Continue' button")
-    public static void verifyAccountCreatedAndClickContinueButton(String name, String email) throws IOException, ParseException {
-        String accountCreatedText = new HomePage(getDriver())
-                .signupLoginClick()
-                .fillCorrectSignup(name, email)
-                .fillAccountDetails()
-                .getAccountCreated()
-                .getText();
-        Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "Verify 'ACCOUNT CREATED!'");
-        new AccountCreatedPage(getDriver()).continueButtonClick();
-    }
-
-    @Step("Verify ' Logged in as username' at top")
-    public static void verifyLoggedInAsUsernameAtTop(String name) {
-        String username = new LoggedHomePage(getDriver())
-                .getUsername()
-                .getText();
-        Assert.assertEquals(username, name, "Verify ' Logged in as username' at top");
     }
 }

@@ -45,8 +45,8 @@ public class TestCase14 extends TestBasic {
     public void placeOrderRegisterWhileCheckout() throws IOException, ParseException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         verifyThatCartPageIsDisplayed();
-        verifyAccountCreatedAndClickContinueButton();
-        verifyLoggedInAsUsernameAtTop();
+        verifyAccountCreatedAndClickContinueButton(name, email);
+        verifyLoggedInAsUsernameAtTop(name);
         verifyAddressDetailsAndReviewYourOrder();
         verifySuccessMessageCongratulationsYourOrderHasBeenConfirmed();
         TestCase1.verifyThatAccountDeletedIsVisibleAndClickContinueButton();
@@ -62,21 +62,19 @@ public class TestCase14 extends TestBasic {
     }
 
     @Step("Verify 'ACCOUNT CREATED!' and click 'Continue' button")
-    private void verifyAccountCreatedAndClickContinueButton() throws IOException, ParseException {
-        String accountCreatedText = new CartPage(getDriver())
-                .proceedToCheckoutButtonClick()
-                .registerLoginButtonClick()
+    public static void verifyAccountCreatedAndClickContinueButton(String name, String email) throws IOException, ParseException {
+        String accountCreatedText = new HomePage(getDriver())
+                .signupLoginClick()
                 .fillCorrectSignup(name, email)
                 .fillAccountDetails()
                 .getAccountCreated()
                 .getText();
-
         Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "Verify 'ACCOUNT CREATED!'");
         new AccountCreatedPage(getDriver()).continueButtonClick();
     }
 
     @Step("Verify ' Logged in as username' at top")
-    private void verifyLoggedInAsUsernameAtTop() {
+    public static void verifyLoggedInAsUsernameAtTop(String name) {
         String username = new LoggedHomePage(getDriver())
                 .getUsername()
                 .getText();

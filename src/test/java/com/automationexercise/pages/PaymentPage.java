@@ -1,6 +1,7 @@
 package com.automationexercise.pages;
 
 import com.automationexercise.utils.JSONReader;
+import com.automationexercise.utils.SeleniumHelper;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +36,12 @@ public class PaymentPage {
     @FindBy(css = "div[class='col-sm-9 col-sm-offset-1'] p")
     private WebElement successMessage;
 
+    @FindBy(css = "a[class='btn btn-default check_out']")
+    private WebElement downloadInvoiceButton;
+
+    @FindBy(css = "a[data-qa='continue-button']")
+    private WebElement continueButton;
+
     private WebDriver driver;
 
     public PaymentPage(WebDriver driver) {
@@ -54,5 +61,16 @@ public class PaymentPage {
 
     public WebElement getSuccessMessage() {
         return successMessage;
+    }
+
+    public PaymentPage downloadInvoiceButtonClick() {
+        downloadInvoiceButton.click();
+        return this;
+    }
+
+    public HomePage continueButtonClick() {
+        SeleniumHelper.waitForElementToBeClickable(driver, continueButton);
+        continueButton.click();
+        return new HomePage(driver);
     }
 }

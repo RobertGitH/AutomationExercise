@@ -34,8 +34,8 @@ public class TestCase23 extends TestBasic {
             14. Verify 'ACCOUNT DELETED!' and click 'Continue' button""")
     public void verifyAddressDetailsInCheckoutPage() throws IOException, ParseException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
-        TestCase15.verifyAccountCreatedAndClickContinueButton(name, email);
-        TestCase15.verifyLoggedInAsUsernameAtTop(name);
+        TestCase14.verifyAccountCreatedAndClickContinueButton(name, email);
+        TestCase14.verifyLoggedInAsUsernameAtTop(name);
         TestCase14.verifyThatCartPageIsDisplayed();
         verifyThatTheDeliveryAddressAndTheBillingAddressIsSameAddressFilledAtTheTimeRegistrationOfAccount();
         TestCase1.verifyThatAccountDeletedIsVisibleAndClickContinueButton();
