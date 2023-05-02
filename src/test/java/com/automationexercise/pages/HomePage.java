@@ -51,6 +51,12 @@ public class HomePage extends TestBasic {
     @FindBy(css = "div[class='modal-content'] a[href='/view_cart']")
     private WebElement viewCartButton;
 
+    @FindBy(id = "scrollUp")
+    private WebElement scrollUpButton;
+
+    @FindBy(xpath = "//section[1]/div/div/div/div/div/div[1]/div[1]/h2")
+    private WebElement fullFledgedPracticeWebsiteForAutomationEngineers;
+
     //footer
     @FindBy(css = "div[class='single-widget'] h2")
     private WebElement subscription;
@@ -63,6 +69,7 @@ public class HomePage extends TestBasic {
 
     @FindBy(id = "success-subscribe")
     private WebElement alertSuccessSubscribe;
+
 
     private WebDriver driver;
 
@@ -138,6 +145,17 @@ public class HomePage extends TestBasic {
         return new CartPage(driver);
     }
 
+    public HomePage scrollUpButtonClick() {
+        scrollUpButton.click();
+        return this;
+    }
+
+    public WebElement getFullFledgedPracticeWebsiteForAutomationEngineers() {
+        SeleniumHelper.waitForElementToBeVisible(driver, fullFledgedPracticeWebsiteForAutomationEngineers);
+        return fullFledgedPracticeWebsiteForAutomationEngineers;
+    }
+
+
     //footer
     public WebElement getSubscription() {
         return subscription;
@@ -153,7 +171,6 @@ public class HomePage extends TestBasic {
     public WebElement getAlertSuccessSubscribe() {
         return alertSuccessSubscribe;
     }
-
 }
 
 
