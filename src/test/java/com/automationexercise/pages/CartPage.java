@@ -41,6 +41,9 @@ public class CartPage {
     @FindBy(id = "empty_cart")
     private WebElement emptyCartSpan;
 
+    @FindBy(css = "a[class='cart_quantity_delete']")
+    private List<WebElement> xButtons;
+
     private WebDriver driver;
 
     public CartPage(WebDriver driver) {
@@ -104,5 +107,14 @@ public class CartPage {
     public WebElement getEmptyCartSpan() {
         SeleniumHelper.waitForElementToBeVisible(driver, emptyCartSpan);
         return emptyCartSpan;
+    }
+
+    public CartPage deleteAllAddedProducts() throws InterruptedException {
+        int xButtonsSize = xButtons.size();
+        for (int i = 0; i < xButtonsSize; i++) {
+            xButtons.get(0).click();
+            Thread.sleep(500);
+        }
+            return this;
     }
 }
