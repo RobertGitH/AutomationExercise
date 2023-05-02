@@ -85,6 +85,25 @@ public class TestCase14 extends TestBasic {
 
     @Step("Verify Address Details and Review Your Order")
     public static void verifyAddressDetailsAndReviewYourOrder() throws IOException, ParseException {
+        verifyAddressDetails();
+
+        List<String> productNames = new CartPage(getDriver()).getProductsNames();
+        List<String> prices = new CartPage(getDriver()).getPrices();
+        List<String> quantity = new CartPage(getDriver()).getQuantity();
+        List<String> totalPrices = new CartPage(getDriver()).getTotalPrices();
+        String totalAmount = new CheckoutPage(getDriver()).getTotalAmount().getText();
+
+        for (int i = 0; i < 2; i++) {
+            Assert.assertEquals(totalPrices.get(i), prices.get(i), "Verify Review Your Order");
+            Assert.assertEquals(quantity.get(i), "1", "Verify Review Your Order");
+        }
+
+        Assert.assertEquals(productNames.get(0), "Blue Top", "Verify Review Your Order");
+        Assert.assertEquals(productNames.get(1), "Men Tshirt", "Verify Review Your Order");
+        Assert.assertEquals(totalAmount, "Rs. 900", "Verify Review Your Order");
+    }
+
+    public static void verifyAddressDetails() throws IOException, ParseException {
         List<String> addressDelivery = new HomePage(getDriver())
                 .cartButtonClick()
                 .proceedToCheckoutLoggedButtonClick()
@@ -113,21 +132,6 @@ public class TestCase14 extends TestBasic {
         Assert.assertEquals(addressDelivery.get(5), no5, "Verify Address Details");
         Assert.assertEquals(addressDelivery.get(6), no6, "Verify Address Details");
         Assert.assertEquals(addressDelivery.get(7), no7, "Verify Address Details");
-
-        List<String> productNames = new CartPage(getDriver()).getProductsNames();
-        List<String> prices = new CartPage(getDriver()).getPrices();
-        List<String> quantity = new CartPage(getDriver()).getQuantity();
-        List<String> totalPrices = new CartPage(getDriver()).getTotalPrices();
-        String totalAmount = new CheckoutPage(getDriver()).getTotalAmount().getText();
-
-        for (int i = 0; i < 2; i++) {
-            Assert.assertEquals(totalPrices.get(i), prices.get(i), "Verify Review Your Order");
-            Assert.assertEquals(quantity.get(i), "1", "Verify Review Your Order");
-        }
-
-        Assert.assertEquals(productNames.get(0), "Blue Top", "Verify Review Your Order");
-        Assert.assertEquals(productNames.get(1), "Men Tshirt", "Verify Review Your Order");
-        Assert.assertEquals(totalAmount, "Rs. 900", "Verify Review Your Order");
     }
 
     @Step("Verify success message 'Congratulations! Your order has been confirmed!'")

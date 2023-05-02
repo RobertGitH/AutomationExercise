@@ -43,8 +43,8 @@ public class TestCase15 extends TestBasic {
             18. Verify that 'ACCOUNT DELETED!' and click 'Continue' button""")
     public void placeOrderRegisterBeforeCheckout() throws IOException, ParseException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
-        verifyAccountCreatedAndClickContinueButton();
-        verifyLoggedInAsUsernameAtTop();
+        verifyAccountCreatedAndClickContinueButton(name, email);
+        verifyLoggedInAsUsernameAtTop(name);
         TestCase14.verifyThatCartPageIsDisplayed();
         new CartPage(getDriver()).proceedToCheckoutButtonClick();
         TestCase14.verifyAddressDetailsAndReviewYourOrder();
@@ -53,7 +53,7 @@ public class TestCase15 extends TestBasic {
     }
 
     @Step("Verify 'ACCOUNT CREATED!' and click 'Continue' button")
-    private void verifyAccountCreatedAndClickContinueButton() throws IOException, ParseException {
+    public static void verifyAccountCreatedAndClickContinueButton(String name, String email) throws IOException, ParseException {
         String accountCreatedText = new HomePage(getDriver())
                 .signupLoginClick()
                 .fillCorrectSignup(name, email)
@@ -65,7 +65,7 @@ public class TestCase15 extends TestBasic {
     }
 
     @Step("Verify ' Logged in as username' at top")
-    private void verifyLoggedInAsUsernameAtTop() {
+    public static void verifyLoggedInAsUsernameAtTop(String name) {
         String username = new LoggedHomePage(getDriver())
                 .getUsername()
                 .getText();
