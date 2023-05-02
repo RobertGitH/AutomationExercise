@@ -42,6 +42,15 @@ public class HomePage extends TestBasic {
     @FindBy(css = "a[href='/category_products/1']")
     private WebElement dressCategory;
 
+    @FindBy(css = "div[class='recommended_items'] h2")
+    private WebElement recommendedItems;
+
+    @FindBy(css = "div[id='recommended-item-carousel'] a[class='btn btn-default add-to-cart']")
+    private WebElement blueTopAddToCartButton;
+
+    @FindBy(css = "div[class='modal-content'] a[href='/view_cart']")
+    private WebElement viewCartButton;
+
     //footer
     @FindBy(css = "div[class='single-widget'] h2")
     private WebElement subscription;
@@ -97,6 +106,38 @@ public class HomePage extends TestBasic {
         return new ProductDetailPage(driver);
     }
 
+    public WebElement getCategories() {
+        return categories;
+    }
+
+    public HomePage womenCategoryClick() {
+        SeleniumHelper.waitForElementToBeClickable(driver, womenCategory);
+        womenCategory.click();
+        return this;
+    }
+
+    public ProductsPage dressCategoryClick() {
+        SeleniumHelper.waitForElementToBeClickable(driver, dressCategory);
+        dressCategory.click();
+        return new ProductsPage(driver);
+    }
+
+    public WebElement getRecommendedItems() {
+        return recommendedItems;
+    }
+
+    public HomePage blueTopAddToCartButtonClick() {
+        SeleniumHelper.waitForElementToBeClickable(driver, blueTopAddToCartButton);
+        blueTopAddToCartButton.click();
+        return this;
+    }
+
+    public CartPage viewCartButtonClick() {
+        SeleniumHelper.waitForElementToBeVisible(driver, viewCartButton);
+        viewCartButton.click();
+        return new CartPage(driver);
+    }
+
     //footer
     public WebElement getSubscription() {
         return subscription;
@@ -113,21 +154,6 @@ public class HomePage extends TestBasic {
         return alertSuccessSubscribe;
     }
 
-    public WebElement getCategories() {
-        return categories;
-    }
-
-    public HomePage womenCategoryClick() {
-        SeleniumHelper.waitForElementToBeClickable(driver, womenCategory);
-        womenCategory.click();
-        return this;
-    }
-
-    public ProductsPage dressCategoryClick() {
-        SeleniumHelper.waitForElementToBeClickable(driver, dressCategory);
-        dressCategory.click();
-        return new ProductsPage(driver);
-    }
 }
 
 

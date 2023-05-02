@@ -14,7 +14,7 @@ import java.io.IOException;
 public class TestCase21 extends TestBasic {
 
     @Test(description = "Test Case 21: Add review on product")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.MINOR)
     @Story("Add review on product")
     @Description("""
             1. Launch browser
