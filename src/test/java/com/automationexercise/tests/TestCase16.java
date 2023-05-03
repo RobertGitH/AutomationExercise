@@ -33,7 +33,7 @@ public class TestCase16 extends TestBasic {
             12. Enter description in comment text area and click 'Place Order'
             13. Enter payment details: Name on Card, Card Number, CVC, Expiration date
             14. Click 'Pay and Confirm Order' button
-            15. Verify success message 'Your order has been placed successfully!'""")
+            15. Verify success message 'Congratulations! Your order has been confirmed!'""")
     public void placeOrderLoginBeforeCheckout() throws IOException, ParseException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
         new HomePage(getDriver())

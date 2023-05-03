@@ -38,7 +38,7 @@ public class TestCase24 extends TestBasic {
             15. Enter description in comment text area and click 'Place Order'
             16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
             17. Click 'Pay and Confirm Order' button
-            18. Verify success message 'Your order has been placed successfully!'
+            18. Verify success message 'Congratulations! Your order has been confirmed!'
             19. Click 'Download Invoice' button and verify invoice is downloaded successfully
             20. Click 'Continue' button
             21. Click 'Delete Account' button
