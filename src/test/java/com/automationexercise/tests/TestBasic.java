@@ -26,7 +26,7 @@ public class TestBasic {
 
     @AfterMethod
     public void tearDown() {
-        //getDriver().quit();
+        getDriver().quit();
         tdriver.remove();
     }
 }
