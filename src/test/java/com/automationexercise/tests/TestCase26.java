@@ -8,44 +8,33 @@ import org.testng.annotations.Test;
 
 @Epic("Regression Tests")
 @Feature("Verify")
-public class TestCase25 extends TestBasic {
+public class TestCase26 extends TestBasic {
 
-    @Test(description = "Test Case 25: Verify Scroll Up using 'Arrow' button and Scroll Down functionality")
+    @Test(description = "Test Case 26: Verify Scroll Up without 'Arrow' button and Scroll Down functionality")
     @Severity(SeverityLevel.TRIVIAL)
-    @Story("Verify Scroll Up using 'Arrow' button and Scroll Down functionality")
+    @Story("Verify Scroll Up without 'Arrow' button and Scroll Down functionality")
     @Description("""
             1. Launch browser
             2. Navigate to url 'http://automationexercise.com'
             3. Verify that home page is visible successfully
             4. Scroll down page to bottom
             5. Verify 'SUBSCRIPTION' is visible
-            6. Click on arrow at bottom right side to move upward
+            6. Scroll up page to top
             7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen""")
-    public void verifyScrollUpUsingArrowButtonAndScrollDownFunctionality() throws InterruptedException {
+    public void verifyScrollUpWithoutArrowButtonAndScrollDownFunctionality() throws InterruptedException {
         TestCase1.verifyThatHomePageIsVisibleSuccessfully();
-        verifySubscriptionIsVisible();
+        TestCase25.verifySubscriptionIsVisible();
         verifyThatPageIsScrolledUpAndFullFledgedPracticeWebsiteForAutomationEngineersTextIsVisibleOnScreen();
-    }
-
-    @Step("Verify 'SUBSCRIPTION' is visible")
-    public static void verifySubscriptionIsVisible() {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("arguments[0].scrollIntoView();", new HomePage(getDriver()).getSubscription());
-        boolean subscriptionIsDisplayed = new HomePage(getDriver()).getSubscription().isDisplayed();
-        Assert.assertTrue(subscriptionIsDisplayed, "Verify 'SUBSCRIPTION' is visible");
     }
 
     @Step("Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen")
     private void verifyThatPageIsScrolledUpAndFullFledgedPracticeWebsiteForAutomationEngineersTextIsVisibleOnScreen() throws InterruptedException {
         Thread.sleep(1000);
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        boolean fullFledgedTextIsDisplayed = new HomePage(getDriver())
-                .scrollUpButtonClick()
-                .getFullFledgedPracticeWebsiteForAutomationEngineers()
-                .isDisplayed();
+        js.executeScript("arguments[0].scrollIntoView();", new HomePage(getDriver()).getFullFledgedPracticeWebsiteForAutomationEngineers());
+        boolean fullFledgedTextIsDisplayed = new HomePage(getDriver()).getFullFledgedPracticeWebsiteForAutomationEngineers().isDisplayed();
         Assert.assertTrue(fullFledgedTextIsDisplayed, "Verify that 'Full-Fledged practice website for Automation Engineers' text is visible on screen");
         double value = (double) js.executeScript("return window.pageYOffset;");
-        Assert.assertTrue(value < 2500, "Verify that page is scrolled up");
-        System.out.println(value);
+        Assert.assertTrue(value < 400, "Verify that page is scrolled up");
     }
 }
