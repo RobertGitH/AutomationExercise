@@ -25,14 +25,16 @@
 
 
 ## :warning: Note:
-* The tests was conducted in Firefox in private mode, which blocks ads. However, it is possible that the test may not work in other browsers due to pop-up ads that require closing.
+* The tests have been run in Firefox in private mode, which blocks ads. However, it is possible that the test may not work in other browsers due to pop-up ads that require closing.
 Tests are not always stable, because sometimes the ads are not blocked completely for some reason.
 Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered issues with certain test cases.
 
 * In order to generate Allure Report, you need to:
-* :one: Install Allure Commandline: npm install -g allure-commandline --save-dev
+* :one: Install Allure Commandline: 
+` npm install -g allure-commandline --save-dev `
 
-* :two: Generate report: allure serve target/allure-results
+* :two: Generate report: 
+` allure serve target/allure-results ` 
 
 ## :100: The project includes all available test cases:
 ### :white_check_mark: Test Case 1: Register User
@@ -55,6 +57,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 17. Click 'Delete Account' button </ol>
 <ol> 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button </ol>
 
+---
+
 ### :white_check_mark: Test Case 2: Login User with correct email and password
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -65,6 +69,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 7. Click 'login' button </ol>
 <ol> 8. Verify that 'Logged in as username' is visible </ol>
 
+---
+
 ### :white_check_mark: Test Case 3: Login User with incorrect email and password
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -74,6 +80,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 6. Enter incorrect email address and password </ol>
 <ol> 7. Click 'login' button </ol>
 <ol> 8. Verify error 'Your email or password is incorrect!' is visible </ol>
+
+---
 
 ### :white_check_mark: Test Case 4: Logout User
 <ol> 1. Launch browser </ol>
@@ -87,6 +95,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 9. Click 'Logout' button </ol>
 <ol> 10. Verify that user is navigated to login page </ol>
 
+---
+
 ### :white_check_mark: Test Case 5: Register User with existing email
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -96,6 +106,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 6. Enter name and already registered email address </ol>
 <ol> 7. Click 'Signup' button </ol>
 <ol> 8. Verify error 'Email Address already exist!' is visible </ol>
+
+---
 
 ### :white_check_mark: Test Case 6: Contact Us Form
 <ol> 1. Launch browser </ol>
@@ -110,12 +122,16 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 10. Verify success message 'Success! Your details have been submitted successfully.' is visible </ol>
 <ol> 11. Click 'Home' button and verify that landed to home page successfully </ol>
 
+---
+
 ### :white_check_mark: Test Case 7: Verify Test Cases Page
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
 <ol> 3. Verify that home page is visible successfully </ol>
 <ol> 4. Click on 'Test Cases' button </ol>
 <ol> 5. Verify user is navigated to test cases page successfully </ol>
+
+---
 
 ### :white_check_mark: Test Case 8: Verify All Products and product detail page
 <ol> 1. Launch browser </ol>
@@ -128,6 +144,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 8. User is landed to product detail page </ol>
 <ol> 9. Verify that detail detail is visible: product name, category, price, availability, condition, brand </ol>
 
+---
+
 ### :white_check_mark: Test Case 9: Search Product
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -138,6 +156,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 7. Verify 'SEARCHED PRODUCTS' is visible </ol>
 <ol> 8. Verify all the products related to search are visible </ol>
 
+---
+
 ### :white_check_mark: Test Case 10: Verify Subscription in home page
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -147,6 +167,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 6. Enter email address in input and click arrow button </ol>
 <ol> 7. Verify success message 'You have been successfully subscribed!' is visible </ol>
 
+---
+
 ### :white_check_mark: Test Case 11: Verify Subscription in Cart page
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -155,6 +177,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 5. Verify text 'SUBSCRIPTION' </ol>
 <ol> 6. Enter email address in input and click arrow button </ol>
 <ol> 7. Verify success message 'You have been successfully subscribed!' is visible </ol>
+
+---
 
 ### :white_check_mark: Test Case 12: Add Products in Cart
 <ol> 1. Launch browser </ol>
@@ -168,6 +192,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 9. Verify both products are added to Cart </ol>
 <ol> 10. Verify their prices, quantity and total price </ol>
 
+---
+
 ### :white_check_mark: Test Case 13: Verify Product quantity in Cart
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -178,6 +204,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 7. Click 'Add to cart' button </ol>
 <ol> 8. Click 'View Cart' button </ol>
 <ol> 9. Verify that product is displayed in cart page with exact quantity </ol>
+
+---
 
 ### :white_check_mark: Test Case 14: Place Order: Register while Checkout
 <ol> 1. Launch browser </ol>
@@ -201,6 +229,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 19. Click 'Delete Account' button </ol> 
 <ol> 20. Verify 'ACCOUNT DELETED!' and click 'Continue' button </ol>
 
+---
+
 ### :white_check_mark: Test Case 15: Place Order: Register before Checkout
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -221,6 +251,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 17. Click 'Delete Account' button </ol>
 <ol> 18. Verify that 'ACCOUNT DELETED!' and click 'Continue' button </ol>
 
+---
+
 ### :white_check_mark: Test Case 16: Place Order: Login before Checkout
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -238,6 +270,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 14. Click 'Pay and Confirm Order' button </ol>
 <ol> 15. Verify success message 'Congratulations! Your order has been confirmed!' </ol>
 
+---
+
 ### :white_check_mark: Test Case 17: Remove Products From Cart
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -247,6 +281,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 6. Verify that cart page is displayed </ol>
 <ol> 7. Click 'X' button corresponding to particular product </ol>
 <ol> 8. Verify that product is removed from the cart </ol>
+
+---
 
 ### :white_check_mark: Test Case 18: View Category Products
 <ol> 1. Launch browser </ol>
@@ -258,6 +294,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 7. On left side bar, click on any sub-category link of 'Men' category </ol>
 <ol> 8. Verify that user is navigated to that category page </ol>
 
+---
+
 ### :white_check_mark: Test Case 19: View & Cart Brand Products
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -267,6 +305,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 6. Verify that user is navigated to brand page and brand products are displayed </ol>
 <ol> 7. On left side bar, click on any other brand link </ol>
 <ol> 8. Verify that user is navigated to that brand page and can see products </ol>
+
+---
 
 ### :white_check_mark: Test Case 20: Search Products and Verify Cart After Login
 <ol> 1. Launch browser </ol>
@@ -284,6 +324,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 13. Remove all products that have been added </ol>
 <ol> 14. Verify 'Cart is empty! Click here to buy products.' is visible </ol>
 
+---
+
 ### :white_check_mark: Test Case 21: Add review on product
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -295,6 +337,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 8. Click 'Submit' button </ol>
 <ol> 9. Verify success message 'Thank you for your review.' </ol>
 
+---
+
 ### :white_check_mark: Test Case 22: Add to cart from Recommended items
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -303,6 +347,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 5. Click on 'Add To Cart' on Recommended product </ol>
 <ol> 6. Click on 'View Cart' button </ol>
 <ol> 7. Verify that product is displayed in cart page </ol>
+
+---
 
 ### :white_check_mark: Test Case 23: Verify address details in checkout page
 <ol> 1. Launch browser </ol>
@@ -319,6 +365,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 12. Verify that the delivery address and the billing address is same address filled at the time registration of account </ol>
 <ol> 13. Click 'Delete Account' button </ol>
 <ol> 14. Verify 'ACCOUNT DELETED!' and click 'Continue' button </ol>
+
+---
 
 ### :white_check_mark: Test Case 24: Download Invoice after purchase order
 <ol> 1. Launch browser </ol> 
@@ -344,6 +392,8 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 21. Click 'Delete Account' button </ol>
 <ol> 22. Verify 'ACCOUNT DELETED!' and click 'Continue' button </ol>
 
+---
+
 ### :white_check_mark: Test Case 25: Verify Scroll Up using 'Arrow' button and Scroll Down functionality
 <ol> 1. Launch browser </ol>
 <ol> 2. Navigate to url 'http://automationexercise.com' </ol>
@@ -353,6 +403,7 @@ Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered 
 <ol> 6. Click on arrow at bottom right side to move upward </ol>
 <ol> 7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen </ol>
 
+---
 
 ### :white_check_mark: Test Case 26: Verify Scroll Up without 'Arrow' button and Scroll Down functionality
 <ol> 1. Launch browser </ol>
