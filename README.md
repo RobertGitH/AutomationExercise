@@ -25,15 +25,15 @@
 
 
 ## :warning: Note:
-* The tests have been run in Firefox in private mode, which blocks ads. However, it is possible that the test may not work in other browsers due to pop-up ads that require closing.
+The tests have been run in Firefox in private mode, which blocks ads. However, it is possible that the test may not work in other browsers due to pop-up ads that require closing.
 Tests are not always stable, because sometimes the ads are not blocked completely for some reason.
 Additionally, I attempted to utilize Chrome with uBlock Origin, but encountered issues with certain test cases.
 
-* In order to generate Allure Report, you need to:
-* :one: Install Allure Commandline: 
+In order to generate Allure Report:
+* Install Allure Commandline: 
 ` npm install -g allure-commandline --save-dev `
 
-* :two: Generate report: 
+* Generate report: 
 ` allure serve target/allure-results ` 
 
 ## :100: The project includes all available test cases:
